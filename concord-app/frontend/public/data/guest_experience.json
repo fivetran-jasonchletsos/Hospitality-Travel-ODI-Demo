@@ -1,0 +1,519 @@
+{
+  "system_nps": 51,
+  "nps_band": {
+    "promoters_pct": 56.2,
+    "passives_pct": 27.4,
+    "detractors_pct": 16.4
+  },
+  "ttr_overall_minutes": 19,
+  "ttr_target_minutes": 15,
+  "complaint_categories": [
+    {
+      "category": "Front-desk wait time",
+      "share_pct": 18.4,
+      "ttr_minutes": 14,
+      "severity_avg": 2.6
+    },
+    {
+      "category": "Room cleanliness",
+      "share_pct": 14.7,
+      "ttr_minutes": 9,
+      "severity_avg": 3.1
+    },
+    {
+      "category": "HVAC / climate control",
+      "share_pct": 11.2,
+      "ttr_minutes": 28,
+      "severity_avg": 2.4
+    },
+    {
+      "category": "Wi-Fi performance",
+      "share_pct": 10.6,
+      "ttr_minutes": 12,
+      "severity_avg": 2
+    },
+    {
+      "category": "Billing dispute",
+      "share_pct": 9.3,
+      "ttr_minutes": 47,
+      "severity_avg": 3.4
+    },
+    {
+      "category": "Loyalty point credit",
+      "share_pct": 7.8,
+      "ttr_minutes": 31,
+      "severity_avg": 2.2
+    },
+    {
+      "category": "Food & beverage quality",
+      "share_pct": 7.1,
+      "ttr_minutes": 18,
+      "severity_avg": 2.7
+    },
+    {
+      "category": "Noise / adjacent guests",
+      "share_pct": 5.8,
+      "ttr_minutes": 21,
+      "severity_avg": 2.5
+    },
+    {
+      "category": "Pool / amenity hours",
+      "share_pct": 4.6,
+      "ttr_minutes": 16,
+      "severity_avg": 1.8
+    },
+    {
+      "category": "Concierge responsiveness",
+      "share_pct": 3.9,
+      "ttr_minutes": 24,
+      "severity_avg": 2.3
+    },
+    {
+      "category": "Parking / valet",
+      "share_pct": 3.4,
+      "ttr_minutes": 17,
+      "severity_avg": 2.1
+    },
+    {
+      "category": "Other",
+      "share_pct": 3.2,
+      "ttr_minutes": 22,
+      "severity_avg": 2
+    }
+  ],
+  "nps_by_property": [
+    {
+      "property_id": "CH-1003",
+      "property_name": "Concord Grand Scottsdale",
+      "brand": "Concord Grand",
+      "nps": 78,
+      "responses_30d": 1183,
+      "promoters_pct": 87.5,
+      "detractors_pct": 6.1
+    },
+    {
+      "property_id": "CH-1109",
+      "property_name": "Concord Grand Oklahoma City",
+      "brand": "Concord Grand",
+      "nps": 77,
+      "responses_30d": 273,
+      "promoters_pct": 90.3,
+      "detractors_pct": 7.6
+    },
+    {
+      "property_id": "CH-1115",
+      "property_name": "Concord Grand Asheville",
+      "brand": "Concord Grand",
+      "nps": 75,
+      "responses_30d": 1357,
+      "promoters_pct": 89.5,
+      "detractors_pct": 12
+    },
+    {
+      "property_id": "CH-1075",
+      "property_name": "Concord Grand New Orleans",
+      "brand": "Concord Grand",
+      "nps": 74,
+      "responses_30d": 538,
+      "promoters_pct": 87.3,
+      "detractors_pct": 7
+    },
+    {
+      "property_id": "CH-1068",
+      "property_name": "Concord Grand Cabo San Lucas",
+      "brand": "Concord Grand",
+      "nps": 73,
+      "responses_30d": 1691,
+      "promoters_pct": 80.5,
+      "detractors_pct": 11.4
+    },
+    {
+      "property_id": "CH-1042",
+      "property_name": "Concord Grand Washington",
+      "brand": "Concord Grand",
+      "nps": 72,
+      "responses_30d": 1191,
+      "promoters_pct": 83.3,
+      "detractors_pct": 12.3
+    },
+    {
+      "property_id": "CH-1084",
+      "property_name": "Concord Resorts Playa del Carmen",
+      "brand": "Concord Resorts",
+      "nps": 72,
+      "responses_30d": 1575,
+      "promoters_pct": 82.2,
+      "detractors_pct": 7.9
+    },
+    {
+      "property_id": "CH-1104",
+      "property_name": "Concord Grand Minneapolis",
+      "brand": "Concord Grand",
+      "nps": 71,
+      "responses_30d": 770,
+      "promoters_pct": 85.2,
+      "detractors_pct": 9.1
+    },
+    {
+      "property_id": "CH-1110",
+      "property_name": "Concord Resorts Nassau",
+      "brand": "Concord Resorts",
+      "nps": 69,
+      "responses_30d": 756,
+      "promoters_pct": 76.3,
+      "detractors_pct": 11.7
+    },
+    {
+      "property_id": "CH-1137",
+      "property_name": "Concord Grand Orlando",
+      "brand": "Concord Grand",
+      "nps": 68,
+      "responses_30d": 253,
+      "promoters_pct": 75,
+      "detractors_pct": 13.6
+    },
+    {
+      "property_id": "CH-1111",
+      "property_name": "Concord Grand Hilton Head",
+      "brand": "Concord Grand",
+      "nps": 67,
+      "responses_30d": 416,
+      "promoters_pct": 84.3,
+      "detractors_pct": 14.2
+    },
+    {
+      "property_id": "CH-1037",
+      "property_name": "Concord Resorts Playa del Carmen",
+      "brand": "Concord Resorts",
+      "nps": 65,
+      "responses_30d": 1259,
+      "promoters_pct": 74.3,
+      "detractors_pct": 14.5
+    },
+    {
+      "property_id": "CH-1059",
+      "property_name": "Concord Resorts Playa del Carmen",
+      "brand": "Concord Resorts",
+      "nps": 65,
+      "responses_30d": 787,
+      "promoters_pct": 82.5,
+      "detractors_pct": 14.6
+    },
+    {
+      "property_id": "CH-1008",
+      "property_name": "Concord Express San Diego",
+      "brand": "Concord Express",
+      "nps": 62,
+      "responses_30d": 1673,
+      "promoters_pct": 75.5,
+      "detractors_pct": 11.3
+    },
+    {
+      "property_id": "CH-1014",
+      "property_name": "Concord Select Detroit",
+      "brand": "Concord Select",
+      "nps": 62,
+      "responses_30d": 590,
+      "promoters_pct": 82.4,
+      "detractors_pct": 12.9
+    },
+    {
+      "property_id": "CH-1021",
+      "property_name": "Concord Express Newark",
+      "brand": "Concord Express",
+      "nps": 62,
+      "responses_30d": 825,
+      "promoters_pct": 80.9,
+      "detractors_pct": 15
+    },
+    {
+      "property_id": "CH-1036",
+      "property_name": "Concord Express Scottsdale",
+      "brand": "Concord Express",
+      "nps": 62,
+      "responses_30d": 1414,
+      "promoters_pct": 76.9,
+      "detractors_pct": 13.3
+    },
+    {
+      "property_id": "CH-1069",
+      "property_name": "Concord Grand Phoenix",
+      "brand": "Concord Grand",
+      "nps": 62,
+      "responses_30d": 1433,
+      "promoters_pct": 82.3,
+      "detractors_pct": 11.8
+    },
+    {
+      "property_id": "CH-1078",
+      "property_name": "Concord Heritage Aspen",
+      "brand": "Concord Heritage",
+      "nps": 62,
+      "responses_30d": 460,
+      "promoters_pct": 76.2,
+      "detractors_pct": 13.5
+    },
+    {
+      "property_id": "CH-1105",
+      "property_name": "Concord Grand Los Angeles",
+      "brand": "Concord Grand",
+      "nps": 62,
+      "responses_30d": 1559,
+      "promoters_pct": 80.6,
+      "detractors_pct": 12.4
+    },
+    {
+      "property_id": "CH-1119",
+      "property_name": "Concord Express Washington",
+      "brand": "Concord Express",
+      "nps": 62,
+      "responses_30d": 1331,
+      "promoters_pct": 82.3,
+      "detractors_pct": 9.8
+    },
+    {
+      "property_id": "CH-1136",
+      "property_name": "Concord Heritage Miami",
+      "brand": "Concord Heritage",
+      "nps": 62,
+      "responses_30d": 1470,
+      "promoters_pct": 74.6,
+      "detractors_pct": 11.7
+    },
+    {
+      "property_id": "CH-1029",
+      "property_name": "Concord Express Santa Barbara",
+      "brand": "Concord Express",
+      "nps": 61,
+      "responses_30d": 698,
+      "promoters_pct": 76.8,
+      "detractors_pct": 14.4
+    },
+    {
+      "property_id": "CH-1047",
+      "property_name": "Concord Grand Oklahoma City",
+      "brand": "Concord Grand",
+      "nps": 61,
+      "responses_30d": 331,
+      "promoters_pct": 78,
+      "detractors_pct": 12.2
+    },
+    {
+      "property_id": "CH-1081",
+      "property_name": "Concord Heritage Brooklyn",
+      "brand": "Concord Heritage",
+      "nps": 61,
+      "responses_30d": 304,
+      "promoters_pct": 74.9,
+      "detractors_pct": 10.4
+    },
+    {
+      "property_id": "CH-1095",
+      "property_name": "Concord Select San Francisco",
+      "brand": "Concord Select",
+      "nps": 61,
+      "responses_30d": 1006,
+      "promoters_pct": 80.7,
+      "detractors_pct": 12.6
+    },
+    {
+      "property_id": "CH-1005",
+      "property_name": "Concord Express New Orleans",
+      "brand": "Concord Express",
+      "nps": 60,
+      "responses_30d": 549,
+      "promoters_pct": 75,
+      "detractors_pct": 11.4
+    },
+    {
+      "property_id": "CH-1011",
+      "property_name": "Concord Resorts Portland",
+      "brand": "Concord Resorts",
+      "nps": 60,
+      "responses_30d": 374,
+      "promoters_pct": 71.6,
+      "detractors_pct": 15.2
+    },
+    {
+      "property_id": "CH-1032",
+      "property_name": "Concord Grand Mexico City",
+      "brand": "Concord Grand",
+      "nps": 60,
+      "responses_30d": 910,
+      "promoters_pct": 73,
+      "detractors_pct": 11.6
+    },
+    {
+      "property_id": "CH-1048",
+      "property_name": "Concord Express Asheville",
+      "brand": "Concord Express",
+      "nps": 60,
+      "responses_30d": 1064,
+      "promoters_pct": 73.8,
+      "detractors_pct": 11.6
+    }
+  ],
+  "nps_bottom_10": [
+    {
+      "property_id": "CH-1016",
+      "property_name": "Concord Heritage Los Angeles",
+      "brand": "Concord Heritage",
+      "nps": 30,
+      "responses_30d": 1425,
+      "promoters_pct": 60.4,
+      "detractors_pct": 21.1
+    },
+    {
+      "property_id": "CH-1030",
+      "property_name": "Concord Select Scottsdale",
+      "brand": "Concord Select",
+      "nps": 30,
+      "responses_30d": 457,
+      "promoters_pct": 60,
+      "detractors_pct": 21.9
+    },
+    {
+      "property_id": "CH-1058",
+      "property_name": "Concord Express Key West",
+      "brand": "Concord Express",
+      "nps": 30,
+      "responses_30d": 1572,
+      "promoters_pct": 67.6,
+      "detractors_pct": 21.5
+    },
+    {
+      "property_id": "CH-1114",
+      "property_name": "Concord Express Charlotte",
+      "brand": "Concord Express",
+      "nps": 30,
+      "responses_30d": 1573,
+      "promoters_pct": 58.4,
+      "detractors_pct": 20.2
+    },
+    {
+      "property_id": "CH-1071",
+      "property_name": "Concord Select Milwaukee",
+      "brand": "Concord Select",
+      "nps": 29,
+      "responses_30d": 1692,
+      "promoters_pct": 61.3,
+      "detractors_pct": 20.5
+    },
+    {
+      "property_id": "CH-1086",
+      "property_name": "Concord Boston",
+      "brand": "Concord",
+      "nps": 29,
+      "responses_30d": 1105,
+      "promoters_pct": 60,
+      "detractors_pct": 18.4
+    },
+    {
+      "property_id": "CH-1101",
+      "property_name": "Concord Nashville",
+      "brand": "Concord",
+      "nps": 29,
+      "responses_30d": 638,
+      "promoters_pct": 64,
+      "detractors_pct": 21.9
+    },
+    {
+      "property_id": "CH-1017",
+      "property_name": "Concord Select Scottsdale",
+      "brand": "Concord Select",
+      "nps": 28,
+      "responses_30d": 1218,
+      "promoters_pct": 61.2,
+      "detractors_pct": 19.9
+    },
+    {
+      "property_id": "CH-1050",
+      "property_name": "Concord Heritage Arlington",
+      "brand": "Concord Heritage",
+      "nps": 28,
+      "responses_30d": 1033,
+      "promoters_pct": 67.6,
+      "detractors_pct": 21.1
+    },
+    {
+      "property_id": "CH-1080",
+      "property_name": "Concord Arlington",
+      "brand": "Concord",
+      "nps": 28,
+      "responses_30d": 538,
+      "promoters_pct": 64.3,
+      "detractors_pct": 23.6
+    }
+  ],
+  "social_listening": [
+    {
+      "source": "Twitter/X",
+      "mentions_24h": 5147,
+      "sentiment_score": 0.03,
+      "share_positive_pct": 71.6,
+      "share_negative_pct": 14.1,
+      "top_topic": "Cleanliness"
+    },
+    {
+      "source": "TripAdvisor",
+      "mentions_24h": 2289,
+      "sentiment_score": 0.57,
+      "share_positive_pct": 54.4,
+      "share_negative_pct": 18.3,
+      "top_topic": "Cleanliness"
+    },
+    {
+      "source": "Google Reviews",
+      "mentions_24h": 1294,
+      "sentiment_score": -0.08,
+      "share_positive_pct": 68.4,
+      "share_negative_pct": 25.7,
+      "top_topic": "Pool experience"
+    },
+    {
+      "source": "Instagram",
+      "mentions_24h": 5796,
+      "sentiment_score": 0.2,
+      "share_positive_pct": 56.1,
+      "share_negative_pct": 14,
+      "top_topic": "Loyalty redemption"
+    },
+    {
+      "source": "Reddit",
+      "mentions_24h": 5323,
+      "sentiment_score": 0.25,
+      "share_positive_pct": 66.7,
+      "share_negative_pct": 16.1,
+      "top_topic": "App / digital key"
+    }
+  ],
+  "recent_critical_cases": [
+    {
+      "case_id": "SC-48201",
+      "property": "Concord Resorts Cancún",
+      "issue": "Wedding-party noise complaint cluster",
+      "source": "TripAdvisor",
+      "sentiment": -0.62,
+      "opened_min_ago": 38,
+      "status": "GM-engaged"
+    },
+    {
+      "case_id": "SC-48207",
+      "property": "Concord Grand New York",
+      "issue": "Billing — duplicate folio charge",
+      "source": "Salesforce",
+      "sentiment": -0.41,
+      "opened_min_ago": 72,
+      "status": "Resolved"
+    },
+    {
+      "case_id": "SC-48214",
+      "property": "Concord Express Houston",
+      "issue": "HVAC repeat outage floor 7",
+      "source": "Salesforce",
+      "sentiment": -0.55,
+      "opened_min_ago": 24,
+      "status": "In-progress"
+    }
+  ]
+}

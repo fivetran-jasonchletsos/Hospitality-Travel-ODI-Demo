@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+/*
+ * Concord Hotels — premium hospitality design system.
+ * Palette: deep teal #134e4a, brass #c9a149, ivory #fafaf5, burgundy #991b1b.
+ * Serif headers (DM Serif Display) evoke the folio of a five-star hotel;
+ * Inter body keeps the data legible. Fivetran chrome stays out; ODI lives
+ * in the architecture.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Surfaces */
+  --ivory:         #fafaf5;
+  --ivory-deep:    #f1ede0;
+  --paper:         #fafaf5;
+  --card:          #ffffff;
+  --teal:          #134e4a;
+  --teal-deep:     #0d3b38;
+  --teal-soft:     #1f7a73;
+  --hairline:      #e5dfcb;
+  --hairline-soft: #efeadd;
+
+  --ink-strong:    #0c1f1d;
+  --ink:           #1f2937;
+  --ink-muted:     #4b5563;
+  --ink-soft:      #6b7280;
+
+  /* Brass accent */
+  --brass:         #c9a149;
+  --brass-bright:  #e0bc6c;
+  --brass-dim:     #876723;
+  --brass-bg:      #faf3e1;
+
+  /* Status */
+  --good:          #166534;
+  --good-bg:       #ecfdf5;
+  --warn:          #b45309;
+  --warn-bg:       #fffbeb;
+  --bad:           #991b1b;
+  --bad-bg:        #fef2f2;
+
+  /* ODI layer chip colors */
+  --bronze:        #b45309;
+  --bronze-bg:     #fff7ed;
+  --silver:        #6b7280;
+  --silver-bg:     #f6f7f9;
+  --gold-layer:    #c9a149;
+  --gold-layer-bg: #faf3e1;
+}
+
+html, body, #root {
+  height: 100%;
+}
+html, body {
+  background-color: var(--ivory);
+  color: var(--ink);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: "DM Serif Display", "Playfair Display", Georgia, "Times New Roman", serif;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+h1 { color: var(--ink-strong); }
+
+.font-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+.brand-rail {
+  height: 2px;
+  background: linear-gradient(90deg, var(--brass-dim) 0%, var(--brass-bright) 50%, var(--brass-dim) 100%);
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--brass-dim);
+}
+.eyebrow-light {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--brass-bright);
+}
+
+.research-card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(19, 78, 74, 0.04);
+}
+
+.kpi-tile {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 0.5rem;
+  padding: 1rem 1.125rem;
+}
+.kpi-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+}
+.kpi-value {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 1.85rem;
+  color: var(--ink-strong);
+  line-height: 1.1;
+  margin-top: 0.375rem;
+  font-variant-numeric: tabular-nums;
+}
+.kpi-delta-good { color: var(--good); font-size: 0.75rem; font-weight: 600; margin-top: 0.25rem; }
+.kpi-delta-bad  { color: var(--bad);  font-size: 0.75rem; font-weight: 600; margin-top: 0.25rem; }
+.kpi-delta-neutral { color: var(--ink-soft); font-size: 0.75rem; font-weight: 600; margin-top: 0.25rem; }
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid transparent;
+}
+.status-pill::before {
+  content: "";
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background: currentColor;
+}
+.status-pill.good    { background: var(--good-bg); color: var(--good); border-color: #bbf7d0; }
+.status-pill.warn    { background: var(--warn-bg); color: var(--warn); border-color: #fde68a; }
+.status-pill.bad     { background: var(--bad-bg);  color: var(--bad);  border-color: #fecaca; }
+.status-pill.brass   { background: var(--brass-bg);color: var(--brass-dim); border-color: #ebd9a3; }
+.status-pill.teal    { background: #ecfeff; color: var(--teal); border-color: #99f6e4; }
+
+.layer-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.1875rem 0.625rem;
+  border-radius: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-family: "JetBrains Mono", monospace;
+}
+.layer-chip.bronze { background: var(--bronze-bg); color: var(--bronze); border: 1px solid #fed7aa; }
+.layer-chip.silver { background: var(--silver-bg); color: var(--silver); border: 1px solid #e2e8f0; }
+.layer-chip.gold   { background: var(--gold-layer-bg); color: var(--gold-layer); border: 1px solid #ebd9a3; }
+.layer-chip.platinum { background: #f5f3ff; color: #6d28d9; border: 1px solid #ddd6fe; }
+
+.tier-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.tier-pill.silver   { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+.tier-pill.gold     { background: #faf3e1; color: #876723; border: 1px solid #ebd9a3; }
+.tier-pill.platinum { background: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
+.tier-pill.black    { background: #0c1f1d; color: #fafaf5; border: 1px solid #0c1f1d; }
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--ivory-deep); }
+::-webkit-scrollbar-thumb { background: #d6cfb5; border-radius: 4px; }
+
+*:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+  border-radius: 3px;
+}

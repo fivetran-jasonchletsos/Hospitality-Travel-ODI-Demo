@@ -1,0 +1,152 @@
+{
+  "generated_at": "2026-05-21T12:00:00Z",
+  "connectors": [
+    {
+      "name": "Oracle Opera PMS",
+      "type": "PMS",
+      "destination": "snowflake.bronze.opera_*",
+      "status": "healthy",
+      "last_sync_min_ago": 4,
+      "rows_24h": 18240000,
+      "freshness_target_min": 10
+    },
+    {
+      "name": "Sabre SynXis CRS",
+      "type": "CRS",
+      "destination": "snowflake.bronze.sabre_*",
+      "status": "healthy",
+      "last_sync_min_ago": 6,
+      "rows_24h": 6120000,
+      "freshness_target_min": 10
+    },
+    {
+      "name": "Amadeus Hospitality",
+      "type": "GDS",
+      "destination": "snowflake.bronze.amadeus_*",
+      "status": "healthy",
+      "last_sync_min_ago": 8,
+      "rows_24h": 4980000,
+      "freshness_target_min": 15
+    },
+    {
+      "name": "Booking.com partner feed",
+      "type": "OTA",
+      "destination": "snowflake.bronze.booking_*",
+      "status": "degraded",
+      "last_sync_min_ago": 22,
+      "rows_24h": 9460000,
+      "freshness_target_min": 15,
+      "note": "Vendor 429 throttling; auto-retry with backoff."
+    },
+    {
+      "name": "Expedia EPC",
+      "type": "OTA",
+      "destination": "snowflake.bronze.expedia_*",
+      "status": "healthy",
+      "last_sync_min_ago": 7,
+      "rows_24h": 7180000,
+      "freshness_target_min": 15
+    },
+    {
+      "name": "Salesforce Service Cloud",
+      "type": "Guest care",
+      "destination": "snowflake.bronze.sfdc_*",
+      "status": "healthy",
+      "last_sync_min_ago": 3,
+      "rows_24h": 412000,
+      "freshness_target_min": 5
+    },
+    {
+      "name": "Cendyn CRM / loyalty",
+      "type": "CRM",
+      "destination": "snowflake.bronze.cendyn_*",
+      "status": "healthy",
+      "last_sync_min_ago": 5,
+      "rows_24h": 2840000,
+      "freshness_target_min": 10
+    },
+    {
+      "name": "Twitter/X firehose",
+      "type": "Social",
+      "destination": "snowflake.bronze.social_x_*",
+      "status": "healthy",
+      "last_sync_min_ago": 2,
+      "rows_24h": 980000,
+      "freshness_target_min": 5
+    },
+    {
+      "name": "TripAdvisor Content API",
+      "type": "Reviews",
+      "destination": "snowflake.bronze.trip_*",
+      "status": "healthy",
+      "last_sync_min_ago": 11,
+      "rows_24h": 180000,
+      "freshness_target_min": 30
+    },
+    {
+      "name": "Google Reviews via Places",
+      "type": "Reviews",
+      "destination": "snowflake.bronze.gmaps_*",
+      "status": "healthy",
+      "last_sync_min_ago": 14,
+      "rows_24h": 220000,
+      "freshness_target_min": 30
+    },
+    {
+      "name": "Stripe payments",
+      "type": "Finance",
+      "destination": "snowflake.bronze.stripe_*",
+      "status": "healthy",
+      "last_sync_min_ago": 5,
+      "rows_24h": 640000,
+      "freshness_target_min": 5
+    },
+    {
+      "name": "NetSuite GL",
+      "type": "Finance",
+      "destination": "snowflake.bronze.netsuite_*",
+      "status": "healthy",
+      "last_sync_min_ago": 18,
+      "rows_24h": 38000,
+      "freshness_target_min": 60
+    }
+  ],
+  "layers": [
+    {
+      "layer": "bronze",
+      "tables": 138,
+      "rows_total": 8420000000,
+      "last_built_min_ago": 4,
+      "tests_passing": 184,
+      "tests_failing": 0
+    },
+    {
+      "layer": "silver",
+      "tables": 64,
+      "rows_total": 2140000000,
+      "last_built_min_ago": 14,
+      "tests_passing": 296,
+      "tests_failing": 1
+    },
+    {
+      "layer": "gold",
+      "tables": 28,
+      "rows_total": 612000000,
+      "last_built_min_ago": 18,
+      "tests_passing": 184,
+      "tests_failing": 0
+    },
+    {
+      "layer": "platinum",
+      "tables": 9,
+      "rows_total": 18000000,
+      "last_built_min_ago": 22,
+      "tests_passing": 46,
+      "tests_failing": 0
+    }
+  ],
+  "lineage_label": "Fivetran",
+  "failure_simulator": {
+    "note": "Toggle the OTA connector to \"degraded\" to demonstrate how Fivetran auto-recovers and how dbt freshness tests catch the drift before it hits the revenue page."
+  }
+}

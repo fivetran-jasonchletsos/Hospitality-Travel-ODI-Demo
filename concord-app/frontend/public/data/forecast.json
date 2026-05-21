@@ -1,0 +1,801 @@
+{
+  "horizon_days": 90,
+  "generated_at": "2026-05-21T06:00:00Z",
+  "model": "Snowpark XGBoost demand model + LightGBM event-overlay; trained on gold.fact_bookings_daily 2019-2026.",
+  "projected_revenue_usd": 502792729,
+  "projected_revpar_avg": 232.78,
+  "daily": [
+    {
+      "date": "2026-05-22",
+      "dow": "Fri",
+      "occ_pct": 79.6,
+      "adr_usd": 326.61,
+      "revpar_usd": 259.98,
+      "has_event": false
+    },
+    {
+      "date": "2026-05-23",
+      "dow": "Sat",
+      "occ_pct": 80.7,
+      "adr_usd": 316.71,
+      "revpar_usd": 255.58,
+      "has_event": false
+    },
+    {
+      "date": "2026-05-24",
+      "dow": "Sun",
+      "occ_pct": 69.4,
+      "adr_usd": 301.4,
+      "revpar_usd": 209.17,
+      "has_event": false
+    },
+    {
+      "date": "2026-05-25",
+      "dow": "Mon",
+      "occ_pct": 71.9,
+      "adr_usd": 294.16,
+      "revpar_usd": 211.5,
+      "has_event": false
+    },
+    {
+      "date": "2026-05-26",
+      "dow": "Tue",
+      "occ_pct": 72,
+      "adr_usd": 297.49,
+      "revpar_usd": 214.19,
+      "has_event": false
+    },
+    {
+      "date": "2026-05-27",
+      "dow": "Wed",
+      "occ_pct": 71,
+      "adr_usd": 285.89,
+      "revpar_usd": 202.98,
+      "has_event": false
+    },
+    {
+      "date": "2026-05-28",
+      "dow": "Thu",
+      "occ_pct": 69.9,
+      "adr_usd": 307.13,
+      "revpar_usd": 214.68,
+      "has_event": false
+    },
+    {
+      "date": "2026-05-29",
+      "dow": "Fri",
+      "occ_pct": 80.8,
+      "adr_usd": 324.45,
+      "revpar_usd": 262.16,
+      "has_event": false
+    },
+    {
+      "date": "2026-05-30",
+      "dow": "Sat",
+      "occ_pct": 76.8,
+      "adr_usd": 318.62,
+      "revpar_usd": 244.7,
+      "has_event": false
+    },
+    {
+      "date": "2026-05-31",
+      "dow": "Sun",
+      "occ_pct": 69.2,
+      "adr_usd": 288.01,
+      "revpar_usd": 199.3,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-01",
+      "dow": "Mon",
+      "occ_pct": 70.2,
+      "adr_usd": 288.89,
+      "revpar_usd": 202.8,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-02",
+      "dow": "Tue",
+      "occ_pct": 68.2,
+      "adr_usd": 295.12,
+      "revpar_usd": 201.27,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-03",
+      "dow": "Wed",
+      "occ_pct": 67.8,
+      "adr_usd": 300.57,
+      "revpar_usd": 203.79,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-04",
+      "dow": "Thu",
+      "occ_pct": 82.2,
+      "adr_usd": 399.21,
+      "revpar_usd": 328.15,
+      "has_event": true
+    },
+    {
+      "date": "2026-06-05",
+      "dow": "Fri",
+      "occ_pct": 76.9,
+      "adr_usd": 312.84,
+      "revpar_usd": 240.57,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-06",
+      "dow": "Sat",
+      "occ_pct": 79.9,
+      "adr_usd": 326.37,
+      "revpar_usd": 260.77,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-07",
+      "dow": "Sun",
+      "occ_pct": 72.2,
+      "adr_usd": 296.21,
+      "revpar_usd": 213.86,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-08",
+      "dow": "Mon",
+      "occ_pct": 68.8,
+      "adr_usd": 302.54,
+      "revpar_usd": 208.15,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-09",
+      "dow": "Tue",
+      "occ_pct": 71.2,
+      "adr_usd": 290.66,
+      "revpar_usd": 206.95,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-10",
+      "dow": "Wed",
+      "occ_pct": 68.9,
+      "adr_usd": 302.11,
+      "revpar_usd": 208.15,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-11",
+      "dow": "Thu",
+      "occ_pct": 67.3,
+      "adr_usd": 302.42,
+      "revpar_usd": 203.53,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-12",
+      "dow": "Fri",
+      "occ_pct": 88.3,
+      "adr_usd": 353.5,
+      "revpar_usd": 312.14,
+      "has_event": true
+    },
+    {
+      "date": "2026-06-13",
+      "dow": "Sat",
+      "occ_pct": 76.3,
+      "adr_usd": 328.38,
+      "revpar_usd": 250.55,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-14",
+      "dow": "Sun",
+      "occ_pct": 68.1,
+      "adr_usd": 291.22,
+      "revpar_usd": 198.32,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-15",
+      "dow": "Mon",
+      "occ_pct": 82,
+      "adr_usd": 412.96,
+      "revpar_usd": 338.63,
+      "has_event": true
+    },
+    {
+      "date": "2026-06-16",
+      "dow": "Tue",
+      "occ_pct": 74.7,
+      "adr_usd": 297.36,
+      "revpar_usd": 222.13,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-17",
+      "dow": "Wed",
+      "occ_pct": 73.3,
+      "adr_usd": 303.66,
+      "revpar_usd": 222.58,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-18",
+      "dow": "Thu",
+      "occ_pct": 71.7,
+      "adr_usd": 302.64,
+      "revpar_usd": 216.99,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-19",
+      "dow": "Fri",
+      "occ_pct": 90.5,
+      "adr_usd": 383.02,
+      "revpar_usd": 346.63,
+      "has_event": true
+    },
+    {
+      "date": "2026-06-20",
+      "dow": "Sat",
+      "occ_pct": 83.3,
+      "adr_usd": 319.93,
+      "revpar_usd": 266.5,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-21",
+      "dow": "Sun",
+      "occ_pct": 68.6,
+      "adr_usd": 289.75,
+      "revpar_usd": 198.77,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-22",
+      "dow": "Mon",
+      "occ_pct": 81.2,
+      "adr_usd": 404.41,
+      "revpar_usd": 328.38,
+      "has_event": true
+    },
+    {
+      "date": "2026-06-23",
+      "dow": "Tue",
+      "occ_pct": 70.3,
+      "adr_usd": 293.35,
+      "revpar_usd": 206.23,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-24",
+      "dow": "Wed",
+      "occ_pct": 71,
+      "adr_usd": 305.66,
+      "revpar_usd": 217.02,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-25",
+      "dow": "Thu",
+      "occ_pct": 67.7,
+      "adr_usd": 293.92,
+      "revpar_usd": 198.98,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-26",
+      "dow": "Fri",
+      "occ_pct": 81,
+      "adr_usd": 319.13,
+      "revpar_usd": 258.5,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-27",
+      "dow": "Sat",
+      "occ_pct": 82.7,
+      "adr_usd": 324.31,
+      "revpar_usd": 268.2,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-28",
+      "dow": "Sun",
+      "occ_pct": 69,
+      "adr_usd": 297.69,
+      "revpar_usd": 205.41,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-29",
+      "dow": "Mon",
+      "occ_pct": 73.3,
+      "adr_usd": 287.36,
+      "revpar_usd": 210.63,
+      "has_event": false
+    },
+    {
+      "date": "2026-06-30",
+      "dow": "Tue",
+      "occ_pct": 72.3,
+      "adr_usd": 301.09,
+      "revpar_usd": 217.69,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-01",
+      "dow": "Wed",
+      "occ_pct": 81.8,
+      "adr_usd": 347.15,
+      "revpar_usd": 283.97,
+      "has_event": true
+    },
+    {
+      "date": "2026-07-02",
+      "dow": "Thu",
+      "occ_pct": 73.9,
+      "adr_usd": 286.04,
+      "revpar_usd": 211.38,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-03",
+      "dow": "Fri",
+      "occ_pct": 80.5,
+      "adr_usd": 330.63,
+      "revpar_usd": 266.16,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-04",
+      "dow": "Sat",
+      "occ_pct": 76.3,
+      "adr_usd": 332.88,
+      "revpar_usd": 253.99,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-05",
+      "dow": "Sun",
+      "occ_pct": 72.8,
+      "adr_usd": 284.26,
+      "revpar_usd": 206.94,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-06",
+      "dow": "Mon",
+      "occ_pct": 73.7,
+      "adr_usd": 296.97,
+      "revpar_usd": 218.87,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-07",
+      "dow": "Tue",
+      "occ_pct": 70.7,
+      "adr_usd": 293.16,
+      "revpar_usd": 207.26,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-08",
+      "dow": "Wed",
+      "occ_pct": 67.4,
+      "adr_usd": 297.98,
+      "revpar_usd": 200.84,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-09",
+      "dow": "Thu",
+      "occ_pct": 73.9,
+      "adr_usd": 297.58,
+      "revpar_usd": 219.91,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-10",
+      "dow": "Fri",
+      "occ_pct": 85.9,
+      "adr_usd": 346.92,
+      "revpar_usd": 298,
+      "has_event": true
+    },
+    {
+      "date": "2026-07-11",
+      "dow": "Sat",
+      "occ_pct": 82,
+      "adr_usd": 332.54,
+      "revpar_usd": 272.68,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-12",
+      "dow": "Sun",
+      "occ_pct": 68.7,
+      "adr_usd": 303.65,
+      "revpar_usd": 208.61,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-13",
+      "dow": "Mon",
+      "occ_pct": 74.9,
+      "adr_usd": 286.85,
+      "revpar_usd": 214.85,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-14",
+      "dow": "Tue",
+      "occ_pct": 71.5,
+      "adr_usd": 295.3,
+      "revpar_usd": 211.14,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-15",
+      "dow": "Wed",
+      "occ_pct": 70.1,
+      "adr_usd": 302.24,
+      "revpar_usd": 211.87,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-16",
+      "dow": "Thu",
+      "occ_pct": 72.2,
+      "adr_usd": 299.41,
+      "revpar_usd": 216.17,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-17",
+      "dow": "Fri",
+      "occ_pct": 86.5,
+      "adr_usd": 391.27,
+      "revpar_usd": 338.45,
+      "has_event": true
+    },
+    {
+      "date": "2026-07-18",
+      "dow": "Sat",
+      "occ_pct": 77.4,
+      "adr_usd": 320.59,
+      "revpar_usd": 248.14,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-19",
+      "dow": "Sun",
+      "occ_pct": 67.8,
+      "adr_usd": 287.45,
+      "revpar_usd": 194.89,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-20",
+      "dow": "Mon",
+      "occ_pct": 74,
+      "adr_usd": 290.92,
+      "revpar_usd": 215.28,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-21",
+      "dow": "Tue",
+      "occ_pct": 69.4,
+      "adr_usd": 303.46,
+      "revpar_usd": 210.6,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-22",
+      "dow": "Wed",
+      "occ_pct": 71.3,
+      "adr_usd": 285.99,
+      "revpar_usd": 203.91,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-23",
+      "dow": "Thu",
+      "occ_pct": 68.1,
+      "adr_usd": 291.34,
+      "revpar_usd": 198.4,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-24",
+      "dow": "Fri",
+      "occ_pct": 86,
+      "adr_usd": 361.07,
+      "revpar_usd": 310.52,
+      "has_event": true
+    },
+    {
+      "date": "2026-07-25",
+      "dow": "Sat",
+      "occ_pct": 77.8,
+      "adr_usd": 317.42,
+      "revpar_usd": 246.95,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-26",
+      "dow": "Sun",
+      "occ_pct": 71.7,
+      "adr_usd": 303.14,
+      "revpar_usd": 217.35,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-27",
+      "dow": "Mon",
+      "occ_pct": 70,
+      "adr_usd": 298.19,
+      "revpar_usd": 208.73,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-28",
+      "dow": "Tue",
+      "occ_pct": 70.5,
+      "adr_usd": 293.83,
+      "revpar_usd": 207.15,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-29",
+      "dow": "Wed",
+      "occ_pct": 69,
+      "adr_usd": 290.69,
+      "revpar_usd": 200.58,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-30",
+      "dow": "Thu",
+      "occ_pct": 72.7,
+      "adr_usd": 286.11,
+      "revpar_usd": 208,
+      "has_event": false
+    },
+    {
+      "date": "2026-07-31",
+      "dow": "Fri",
+      "occ_pct": 81.1,
+      "adr_usd": 327.22,
+      "revpar_usd": 265.38,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-01",
+      "dow": "Sat",
+      "occ_pct": 79.8,
+      "adr_usd": 316.4,
+      "revpar_usd": 252.49,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-02",
+      "dow": "Sun",
+      "occ_pct": 71.6,
+      "adr_usd": 293.32,
+      "revpar_usd": 210.02,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-03",
+      "dow": "Mon",
+      "occ_pct": 73.5,
+      "adr_usd": 295.85,
+      "revpar_usd": 217.45,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-04",
+      "dow": "Tue",
+      "occ_pct": 78.2,
+      "adr_usd": 362.24,
+      "revpar_usd": 283.27,
+      "has_event": true
+    },
+    {
+      "date": "2026-08-05",
+      "dow": "Wed",
+      "occ_pct": 69.9,
+      "adr_usd": 296.35,
+      "revpar_usd": 207.15,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-06",
+      "dow": "Thu",
+      "occ_pct": 74.4,
+      "adr_usd": 286.58,
+      "revpar_usd": 213.22,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-07",
+      "dow": "Fri",
+      "occ_pct": 80.3,
+      "adr_usd": 322.19,
+      "revpar_usd": 258.72,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-08",
+      "dow": "Sat",
+      "occ_pct": 76.6,
+      "adr_usd": 312.77,
+      "revpar_usd": 239.58,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-09",
+      "dow": "Sun",
+      "occ_pct": 74.8,
+      "adr_usd": 294.84,
+      "revpar_usd": 220.54,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-10",
+      "dow": "Mon",
+      "occ_pct": 72.1,
+      "adr_usd": 297.81,
+      "revpar_usd": 214.72,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-11",
+      "dow": "Tue",
+      "occ_pct": 69.9,
+      "adr_usd": 298.88,
+      "revpar_usd": 208.92,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-12",
+      "dow": "Wed",
+      "occ_pct": 72.1,
+      "adr_usd": 305.28,
+      "revpar_usd": 220.11,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-13",
+      "dow": "Thu",
+      "occ_pct": 69.3,
+      "adr_usd": 293.54,
+      "revpar_usd": 203.42,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-14",
+      "dow": "Fri",
+      "occ_pct": 84,
+      "adr_usd": 326.85,
+      "revpar_usd": 274.55,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-15",
+      "dow": "Sat",
+      "occ_pct": 82,
+      "adr_usd": 326.16,
+      "revpar_usd": 267.45,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-16",
+      "dow": "Sun",
+      "occ_pct": 74.3,
+      "adr_usd": 287.46,
+      "revpar_usd": 213.58,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-17",
+      "dow": "Mon",
+      "occ_pct": 70.9,
+      "adr_usd": 293.27,
+      "revpar_usd": 207.93,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-18",
+      "dow": "Tue",
+      "occ_pct": 73.7,
+      "adr_usd": 285.31,
+      "revpar_usd": 210.27,
+      "has_event": false
+    },
+    {
+      "date": "2026-08-19",
+      "dow": "Wed",
+      "occ_pct": 70.2,
+      "adr_usd": 304.42,
+      "revpar_usd": 213.7,
+      "has_event": false
+    }
+  ],
+  "events": [
+    {
+      "date": "2026-06-04",
+      "city": "Chicago",
+      "name": "Sweets & Snacks Expo",
+      "impact": "compression",
+      "adr_lift_pct": 38
+    },
+    {
+      "date": "2026-06-12",
+      "city": "New Orleans",
+      "name": "AHIA Annual Meeting",
+      "impact": "compression",
+      "adr_lift_pct": 22
+    },
+    {
+      "date": "2026-06-15",
+      "city": "Nashville",
+      "name": "CMA Music Festival",
+      "impact": "compression",
+      "adr_lift_pct": 41
+    },
+    {
+      "date": "2026-06-19",
+      "city": "Las Vegas",
+      "name": "InfoSec World",
+      "impact": "compression",
+      "adr_lift_pct": 28
+    },
+    {
+      "date": "2026-06-22",
+      "city": "Boston",
+      "name": "BIO International",
+      "impact": "compression",
+      "adr_lift_pct": 34
+    },
+    {
+      "date": "2026-07-01",
+      "city": "Washington",
+      "name": "Independence Day weekend",
+      "impact": "leisure",
+      "adr_lift_pct": 18
+    },
+    {
+      "date": "2026-07-10",
+      "city": "San Francisco",
+      "name": "Anime Expo overflow",
+      "impact": "compression",
+      "adr_lift_pct": 21
+    },
+    {
+      "date": "2026-07-17",
+      "city": "Atlanta",
+      "name": "Microsoft Inspire",
+      "impact": "compression",
+      "adr_lift_pct": 32
+    },
+    {
+      "date": "2026-07-24",
+      "city": "Cancún",
+      "name": "Summer leisure peak",
+      "impact": "leisure",
+      "adr_lift_pct": 24
+    },
+    {
+      "date": "2026-08-04",
+      "city": "Denver",
+      "name": "Outdoor Retailer",
+      "impact": "compression",
+      "adr_lift_pct": 19
+    }
+  ]
+}

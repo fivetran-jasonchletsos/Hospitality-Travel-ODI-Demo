@@ -1,0 +1,74 @@
+{
+  "generated_at": "2026-05-21T12:00:00Z",
+  "source": "demo",
+  "as_of_date": "2026-05-21",
+  "kpis": [
+    {
+      "label": "Properties",
+      "value": 142,
+      "format": "int"
+    },
+    {
+      "label": "Rooms",
+      "value": 23999,
+      "format": "int"
+    },
+    {
+      "label": "System RevPAR",
+      "value": 219.65,
+      "format": "currency",
+      "delta_vs_ly_pct": 4.2
+    },
+    {
+      "label": "System ADR",
+      "value": 295.62,
+      "format": "currency",
+      "delta_vs_ly_pct": 5.7
+    },
+    {
+      "label": "Occupancy",
+      "value": 74.3,
+      "format": "percent",
+      "delta_vs_ly_pct": -1.4
+    },
+    {
+      "label": "Loyalty members",
+      "value": 4820000,
+      "format": "int",
+      "delta_vs_ly_pct": 11.8
+    },
+    {
+      "label": "System NPS",
+      "value": 51,
+      "format": "int",
+      "delta_vs_ly_pct": 3
+    },
+    {
+      "label": "OTB pace vs LY",
+      "value": 6.1,
+      "format": "percent_signed"
+    }
+  ],
+  "top_ops_issues": [
+    {
+      "severity": "high",
+      "title": "OTA channel mix overweight at 3 Florida resorts",
+      "detail": "Booking.com share at Naples, Key West, Fort Lauderdale resorts is running 41% of summer pace vs 28% target. Commission drag ~$1.8M / quarter if not corrected.",
+      "property_ids": [
+        "Naples",
+        "Key West",
+        "Fort Lauderdale"
+      ]
+    },
+    {
+      "severity": "medium",
+      "title": "Pricing agent flagged 17 properties below comp-set on shoulder dates",
+      "detail": "Dynamic-pricing model recommends $14–$28 ADR lift on midweek shoulder nights. Awaiting RM approval — 9 properties have auto-accept enabled."
+    },
+    {
+      "severity": "medium",
+      "title": "NPS dipped 4 pts at Concord Express portfolio",
+      "detail": "Top complaint: front-desk wait time >7 min during 6–9pm check-in. Salesforce Service Cloud cases up 22% MoM."
+    }
+  ]
+}

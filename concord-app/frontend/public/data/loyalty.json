@@ -1,0 +1,263 @@
+{
+  "total_members": 4820000,
+  "point_liability_usd": 412000000,
+  "redemption_rate_pct": 38.4,
+  "active_members_ttm": 2640000,
+  "tiers": [
+    {
+      "tier": "Silver",
+      "share_pct": 64.4,
+      "members": 3104080,
+      "adr_uplift_pct": 2.1,
+      "avg_stays_per_yr": 1.4,
+      "avg_ltv": 1950
+    },
+    {
+      "tier": "Gold",
+      "share_pct": 24.7,
+      "members": 1190540,
+      "adr_uplift_pct": 6.8,
+      "avg_stays_per_yr": 3.9,
+      "avg_ltv": 6400
+    },
+    {
+      "tier": "Platinum",
+      "share_pct": 8.8,
+      "members": 424160,
+      "adr_uplift_pct": 12.6,
+      "avg_stays_per_yr": 9.2,
+      "avg_ltv": 18200
+    },
+    {
+      "tier": "Black",
+      "share_pct": 2.1,
+      "members": 101220,
+      "adr_uplift_pct": 21.4,
+      "avg_stays_per_yr": 22.6,
+      "avg_ltv": 64800
+    }
+  ],
+  "top_members": [
+    {
+      "rank": 1,
+      "name": "Aiko Chen",
+      "member_id": "M-849921",
+      "tier": "Black",
+      "stays_ttm": 58,
+      "nights_ttm": 290,
+      "lifetime_value_usd": 135018,
+      "pref_brand": "Concord Resorts",
+      "home_market": "Mexico City"
+    },
+    {
+      "rank": 2,
+      "name": "Jordan Patel",
+      "member_id": "M-680150",
+      "tier": "Black",
+      "stays_ttm": 40,
+      "nights_ttm": 160,
+      "lifetime_value_usd": 200993,
+      "pref_brand": "Concord Grand",
+      "home_market": "Singapore"
+    },
+    {
+      "rank": 3,
+      "name": "Priya Saito",
+      "member_id": "M-303563",
+      "tier": "Black",
+      "stays_ttm": 62,
+      "nights_ttm": 124,
+      "lifetime_value_usd": 209642,
+      "pref_brand": "Concord Resorts",
+      "home_market": "Toronto"
+    },
+    {
+      "rank": 4,
+      "name": "Marcus Mancini",
+      "member_id": "M-587529",
+      "tier": "Black",
+      "stays_ttm": 47,
+      "nights_ttm": 235,
+      "lifetime_value_usd": 172214,
+      "pref_brand": "Concord Grand",
+      "home_market": "Singapore"
+    },
+    {
+      "rank": 5,
+      "name": "Sofia Bellamy",
+      "member_id": "M-386477",
+      "tier": "Black",
+      "stays_ttm": 57,
+      "nights_ttm": 114,
+      "lifetime_value_usd": 105398,
+      "pref_brand": "Concord Resorts",
+      "home_market": "Singapore"
+    },
+    {
+      "rank": 6,
+      "name": "Daniel Sato",
+      "member_id": "M-627404",
+      "tier": "Black",
+      "stays_ttm": 61,
+      "nights_ttm": 122,
+      "lifetime_value_usd": 144444,
+      "pref_brand": "Concord Resorts",
+      "home_market": "New York"
+    },
+    {
+      "rank": 7,
+      "name": "Naomi Khoury",
+      "member_id": "M-356260",
+      "tier": "Platinum",
+      "stays_ttm": 20,
+      "nights_ttm": 80,
+      "lifetime_value_usd": 71214,
+      "pref_brand": "Concord Grand",
+      "home_market": "Los Angeles"
+    },
+    {
+      "rank": 8,
+      "name": "Hiroshi Okonkwo",
+      "member_id": "M-643494",
+      "tier": "Platinum",
+      "stays_ttm": 31,
+      "nights_ttm": 93,
+      "lifetime_value_usd": 50468,
+      "pref_brand": "Concord Grand",
+      "home_market": "Dubai"
+    },
+    {
+      "rank": 9,
+      "name": "Linnea Becker",
+      "member_id": "M-186352",
+      "tier": "Platinum",
+      "stays_ttm": 18,
+      "nights_ttm": 90,
+      "lifetime_value_usd": 68065,
+      "pref_brand": "Concord Resorts",
+      "home_market": "Los Angeles"
+    },
+    {
+      "rank": 10,
+      "name": "Theo Tanaka",
+      "member_id": "M-808652",
+      "tier": "Platinum",
+      "stays_ttm": 14,
+      "nights_ttm": 42,
+      "lifetime_value_usd": 37482,
+      "pref_brand": "Concord Grand",
+      "home_market": "Los Angeles"
+    },
+    {
+      "rank": 11,
+      "name": "Mei Whitfield",
+      "member_id": "M-788096",
+      "tier": "Platinum",
+      "stays_ttm": 28,
+      "nights_ttm": 140,
+      "lifetime_value_usd": 54037,
+      "pref_brand": "Concord",
+      "home_market": "Singapore"
+    },
+    {
+      "rank": 12,
+      "name": "Andre Adeyemi",
+      "member_id": "M-302061",
+      "tier": "Platinum",
+      "stays_ttm": 20,
+      "nights_ttm": 100,
+      "lifetime_value_usd": 67926,
+      "pref_brand": "Concord Resorts",
+      "home_market": "Dubai"
+    },
+    {
+      "rank": 13,
+      "name": "Yusuf Park",
+      "member_id": "M-356208",
+      "tier": "Platinum",
+      "stays_ttm": 31,
+      "nights_ttm": 62,
+      "lifetime_value_usd": 39769,
+      "pref_brand": "Concord Resorts",
+      "home_market": "London"
+    },
+    {
+      "rank": 14,
+      "name": "Camille Halvorsen",
+      "member_id": "M-756458",
+      "tier": "Platinum",
+      "stays_ttm": 14,
+      "nights_ttm": 42,
+      "lifetime_value_usd": 43096,
+      "pref_brand": "Concord",
+      "home_market": "Los Angeles"
+    },
+    {
+      "rank": 15,
+      "name": "Wren Reyes",
+      "member_id": "M-347418",
+      "tier": "Gold",
+      "stays_ttm": 12,
+      "nights_ttm": 36,
+      "lifetime_value_usd": 14755,
+      "pref_brand": "Concord",
+      "home_market": "Dubai"
+    },
+    {
+      "rank": 16,
+      "name": "Olu Lindqvist",
+      "member_id": "M-659851",
+      "tier": "Gold",
+      "stays_ttm": 14,
+      "nights_ttm": 56,
+      "lifetime_value_usd": 10378,
+      "pref_brand": "Concord Resorts",
+      "home_market": "Toronto"
+    },
+    {
+      "rank": 17,
+      "name": "Ines Nakamura",
+      "member_id": "M-646675",
+      "tier": "Gold",
+      "stays_ttm": 11,
+      "nights_ttm": 44,
+      "lifetime_value_usd": 9269,
+      "pref_brand": "Concord Resorts",
+      "home_market": "London"
+    },
+    {
+      "rank": 18,
+      "name": "Sven Iyer",
+      "member_id": "M-680340",
+      "tier": "Gold",
+      "stays_ttm": 10,
+      "nights_ttm": 20,
+      "lifetime_value_usd": 10160,
+      "pref_brand": "Concord Grand",
+      "home_market": "Singapore"
+    },
+    {
+      "rank": 19,
+      "name": "Astrid Volkov",
+      "member_id": "M-900731",
+      "tier": "Gold",
+      "stays_ttm": 14,
+      "nights_ttm": 56,
+      "lifetime_value_usd": 15311,
+      "pref_brand": "Concord Grand",
+      "home_market": "New York"
+    },
+    {
+      "rank": 20,
+      "name": "Kai Esposito",
+      "member_id": "M-813103",
+      "tier": "Gold",
+      "stays_ttm": 11,
+      "nights_ttm": 33,
+      "lifetime_value_usd": 13061,
+      "pref_brand": "Concord Grand",
+      "home_market": "Mexico City"
+    }
+  ],
+  "notes": "Point liability is the actuarial value of unredeemed points (Cendyn ledger, audited annually). Black tier represents 2.1% of members but ~14% of system revenue."
+}

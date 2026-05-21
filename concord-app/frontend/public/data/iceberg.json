@@ -1,0 +1,124 @@
+{
+  "tables": [
+    {
+      "catalog": "snowflake_horizon",
+      "namespace": "concord_lake.bronze",
+      "table": "opera_reservations",
+      "rows": 1840000000,
+      "files": 12480,
+      "size_gb": 942,
+      "partition": "arrival_date_month",
+      "last_commit": "2026-05-21T11:42:00Z"
+    },
+    {
+      "catalog": "snowflake_horizon",
+      "namespace": "concord_lake.bronze",
+      "table": "opera_folios",
+      "rows": 980000000,
+      "files": 8120,
+      "size_gb": 410,
+      "partition": "check_out_date_month",
+      "last_commit": "2026-05-21T11:44:00Z"
+    },
+    {
+      "catalog": "snowflake_horizon",
+      "namespace": "concord_lake.bronze",
+      "table": "booking_com_bookings",
+      "rows": 720000000,
+      "files": 6240,
+      "size_gb": 286,
+      "partition": "create_date_day",
+      "last_commit": "2026-05-21T11:38:00Z"
+    },
+    {
+      "catalog": "snowflake_horizon",
+      "namespace": "concord_lake.bronze",
+      "table": "sfdc_cases",
+      "rows": 62000000,
+      "files": 980,
+      "size_gb": 28.4,
+      "partition": "case_open_month",
+      "last_commit": "2026-05-21T11:50:00Z"
+    },
+    {
+      "catalog": "snowflake_horizon",
+      "namespace": "concord_lake.bronze",
+      "table": "social_x_mentions",
+      "rows": 220000000,
+      "files": 3140,
+      "size_gb": 72.1,
+      "partition": "mention_date_day",
+      "last_commit": "2026-05-21T11:52:00Z"
+    },
+    {
+      "catalog": "snowflake_horizon",
+      "namespace": "concord_lake.silver",
+      "table": "reservations_clean",
+      "rows": 1820000000,
+      "files": 9840,
+      "size_gb": 812,
+      "partition": "arrival_date_month",
+      "last_commit": "2026-05-21T11:30:00Z"
+    },
+    {
+      "catalog": "snowflake_horizon",
+      "namespace": "concord_lake.silver",
+      "table": "guest_unified",
+      "rows": 142000000,
+      "files": 2120,
+      "size_gb": 86.2,
+      "partition": "created_year",
+      "last_commit": "2026-05-21T11:32:00Z"
+    },
+    {
+      "catalog": "snowflake_horizon",
+      "namespace": "concord_lake.gold",
+      "table": "fact_bookings_daily",
+      "rows": 178000000,
+      "files": 2240,
+      "size_gb": 71.4,
+      "partition": "stay_date_month",
+      "last_commit": "2026-05-21T11:18:00Z"
+    },
+    {
+      "catalog": "snowflake_horizon",
+      "namespace": "concord_lake.gold",
+      "table": "fact_compset_rates",
+      "rows": 62000000,
+      "files": 880,
+      "size_gb": 24.6,
+      "partition": "rate_date_month",
+      "last_commit": "2026-05-21T11:20:00Z"
+    },
+    {
+      "catalog": "snowflake_horizon",
+      "namespace": "concord_lake.gold",
+      "table": "dim_property",
+      "rows": 142,
+      "files": 4,
+      "size_gb": 0.04,
+      "partition": "—",
+      "last_commit": "2026-05-21T08:00:00Z"
+    },
+    {
+      "catalog": "snowflake_horizon",
+      "namespace": "concord_lake.gold",
+      "table": "dim_loyalty_member",
+      "rows": 4820000,
+      "files": 120,
+      "size_gb": 4.2,
+      "partition": "enrollment_year",
+      "last_commit": "2026-05-21T10:42:00Z"
+    },
+    {
+      "catalog": "snowflake_horizon",
+      "namespace": "concord_lake.gold",
+      "table": "fact_guest_sentiment_daily",
+      "rows": 86000000,
+      "files": 940,
+      "size_gb": 18.6,
+      "partition": "sentiment_date_month",
+      "last_commit": "2026-05-21T11:24:00Z"
+    }
+  ]
+}
