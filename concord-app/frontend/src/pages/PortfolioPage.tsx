@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { fetchData, fmtCurrency, fmtNumber, fmtSignedPct } from '../api/data';
 import PropertyMap from '../components/PropertyMap';
+import { initRelated, relatedFor, type Property as RelatedProperty } from '../lib/related';
 
 type Property = {
   property_id: string; name: string; brand: string; market_segment: string;
@@ -15,10 +16,14 @@ export default function PortfolioPage() {
   const [brand, setBrand] = useState<string>('All');
   const [colorBy, setColorBy] = useState<'revpar' | 'occupancy'>('revpar');
   const [sortKey, setSortKey] = useState<keyof Property>('revpar_usd');
+  const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
 
   useEffect(() => {
     fetchData<{ properties: Property[] }>('/data/properties.json')
-      .then((d) => setProps(d.properties)).catch(() => {});
+      .then((d) => {
+        setProps(d.properties);
+        initRelated(d.properties as RelatedProperty[]);
+      }).catch(() => {});
   }, []);
 
   const regions = useMemo(() => Array.from(new Set(props.map((p) => p.region))).sort(), [props]);
@@ -70,7 +75,11 @@ export default function PortfolioPage() {
           </thead>
           <tbody className="divide-y divide-[var(--hairline-soft)]">
             {filtered.map((p) => (
-              <tr key={p.property_id} className="hover:bg-[var(--ivory-deep)]/40">
+              <tr
+                key={p.property_id}
+                onClick={() => setSelectedProperty(selectedProperty?.property_id === p.property_id ? null : p)}
+                className={`cursor-pointer hover:bg-[var(--ivory-deep)]/40 ${selectedProperty?.property_id === p.property_id ? 'bg-[var(--brass-bg)]' : ''}`}
+              >
                 <td className="px-4 py-2 font-medium text-[var(--ink-strong)]">{p.name}</td>
                 <td className="px-4 py-2 text-[var(--ink-muted)]">
                   <div>{p.brand}</div>
@@ -90,6 +99,79 @@ export default function PortfolioPage() {
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Related Properties panel — appears when a row is selected */}
+      {selectedProperty && (
+        <RelatedPanel property={selectedProperty} onClose={() => setSelectedProperty(null)} />
+      )}
+    </div>
+  );
+}
+
+function RelatedPanel({ property, onClose }: { property: Property; onClose: () => void }) {
+  const neighbors = relatedFor(property.property_id);
+
+  return (
+    <div className="mt-6 research-card overflow-hidden">
+      <div className="px-5 py-3 border-b border-[var(--hairline-soft)] flex items-center justify-between gap-4">
+        <div>
+          <div className="eyebrow mb-0.5">Related Properties</div>
+          <h2 className="font-serif text-xl leading-tight">
+            Properties most similar to {property.name}
+          </h2>
+          <p className="text-[11px] text-[var(--ink-soft)] mt-1">
+            Ranked by brand tier, market type, region, and ADR band similarity. Top 8.
+          </p>
+        </div>
+        <button
+          onClick={onClose}
+          aria-label="Close related panel"
+          className="shrink-0 h-7 w-7 inline-flex items-center justify-center rounded-sm border border-[var(--hairline)] text-[var(--ink-soft)] hover:bg-[var(--ivory-deep)] transition text-lg leading-none"
+        >
+          ×
+        </button>
+      </div>
+
+      {neighbors.length === 0 ? (
+        <p className="px-5 py-4 text-sm text-[var(--ink-muted)]">No similar properties found.</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-[var(--hairline-soft)]">
+          {neighbors.map((nb, idx) => (
+            <div key={nb.property.property_id} className="px-4 py-3 flex flex-col gap-1">
+              <div className="flex items-center justify-between gap-2">
+                <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--ink-soft)]">
+                  #{idx + 1}
+                </span>
+                <span className="font-mono text-[9px] font-semibold text-[var(--brass-dim)]">
+                  {Math.round(nb.score * 100)}% match
+                </span>
+              </div>
+              <div className="font-serif text-[15px] leading-snug text-[var(--ink-strong)]">
+                {nb.property.name}
+              </div>
+              <div className="text-[11px] text-[var(--ink-muted)]">
+                {nb.property.brand}
+              </div>
+              <div className="text-[11px] text-[var(--ink-soft)]">
+                {nb.property.city}, {nb.property.state} · {nb.property.region}
+              </div>
+              <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5 text-[11px] text-[var(--ink-muted)]">
+                <span>ADR {fmtCurrency(nb.property.adr_usd)}</span>
+                <span>RevPAR {fmtCurrency(nb.property.revpar_usd)}</span>
+              </div>
+              <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.15em] text-[var(--brass-dim)]">
+                {nb.why}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="px-5 py-2.5 border-t border-[var(--hairline-soft)] bg-[var(--ivory-deep)] text-[10px] text-[var(--ink-soft)]">
+        Similarity model: brand tier (weight 1.6), market type (1.4), region (0.9), ADR band (0.7), amenity tags (0.6).
+        Pre-computed at page load from the static properties snapshot — mirrors a Snowflake Cortex
+        embedding pipeline in production.
       </div>
     </div>
   );

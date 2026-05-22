@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 const NAV_ITEMS: [string, string][] = [
   ['/', 'Home'],
   ['/portfolio', 'Portfolio'],
+  ['/related', 'Related Properties'],
   ['/revenue', 'Revenue'],
   ['/guest', 'Guest Experience'],
   ['/architecture', 'ODI Architecture'],

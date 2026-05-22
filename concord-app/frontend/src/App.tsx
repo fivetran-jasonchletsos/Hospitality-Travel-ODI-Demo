@@ -8,6 +8,7 @@ import RevenuePage from './pages/RevenuePage';
 import GuestPage from './pages/GuestPage';
 import PolicyPage from './pages/PolicyPage';
 import PortfolioPage from './pages/PortfolioPage';
+import RelatedPage from './pages/RelatedPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/related" element={<RelatedPage />} />
           <Route path="/revenue" element={<RevenuePage />} />
           <Route path="/guest" element={<GuestPage />} />
           <Route path="/architecture" element={<ArchitecturePage />} />
