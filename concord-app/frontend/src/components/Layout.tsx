@@ -16,7 +16,7 @@ const DEMOS = [
   { key: 'tax-assessment', name: 'Allegheny County Tax', industry: 'Public sector · Property assessment', url: 'https://fivetran-jasonchletsos.github.io/tax-assessment-databricks-demo/', accent: '#dc2626' },
   { key: 'healthcare',     name: 'Epic Clarity',         industry: 'Healthcare · Clinical analytics',     url: 'https://fivetran-jasonchletsos.github.io/Healthcare-EPIC-Snowflake-Demo/', accent: '#0d9488' },
   { key: 'finserv',        name: 'Meridian Capital',     industry: 'Financial Services · Wealth & banking', url: 'https://fivetran-jasonchletsos.github.io/FinServ-ODI-Demo/', accent: '#1d4ed8' },
-  { key: 'hospitality',    name: 'Concord Hotels',       industry: 'Hospitality · Revenue & guest experience', url: 'https://fivetran-jasonchletsos.github.io/Hospitality-Travel-ODI-Demo/', accent: '#134e4a' },
+  { key: 'hospitality',    name: 'Ardmore Hotels',       industry: 'Hospitality · Revenue & guest experience', url: 'https://fivetran-jasonchletsos.github.io/Hospitality-Travel-ODI-Demo/', accent: '#134e4a' },
   { key: 'insurance',      name: 'Atlas Risk',           industry: 'Insurance · Policies, claims, reinsurance', url: 'https://fivetran-jasonchletsos.github.io/Insurance-ODI-Demo/', accent: '#0369a1' },
   { key: 'media',          name: 'Lighthouse Media',     industry: 'Media · Audience intelligence',       url: 'https://fivetran-jasonchletsos.github.io/Media-ODI-Demo/', accent: '#7c3aed' },
   { key: 'retail',         name: 'Storefront Analytics', industry: 'Retail & e-commerce',                  url: 'https://fivetran-jasonchletsos.github.io/RetailEcom-ODI-Demo/', accent: '#ea580c' },
@@ -45,7 +45,7 @@ export default function Layout() {
               </div>
               <div className="leading-tight min-w-0">
                 <div className="font-serif text-xl sm:text-2xl tracking-tight truncate">
-                  Concord Hotels
+                  Ardmore Hotels
                 </div>
                 <div className="mt-0.5 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--brass-bright)]">
                   Revenue & Guest Intelligence
@@ -128,7 +128,7 @@ export default function Layout() {
               <div className="h-7 w-7 rounded-sm flex items-center justify-center" style={{ background: 'var(--brass)' }}>
                 <ConcordMark className="h-4 w-4 text-[var(--teal-deep)]" />
               </div>
-              <div className="font-serif text-white text-lg">Concord Hotels</div>
+              <div className="font-serif text-white text-lg">Ardmore Hotels</div>
             </div>
             <p className="leading-relaxed text-white/60">
               Revenue management and guest experience portal built on Fivetran Open Data
@@ -153,7 +153,7 @@ export default function Layout() {
         </div>
         <div className="border-t border-white/10">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 text-[11px] text-white/50 flex flex-col sm:flex-row gap-1 sm:items-center sm:justify-between">
-            <div>© 2026 Concord Hotels ODI Demo · Fivetran Open Data Infrastructure</div>
+            <div>© 2026 Ardmore Hotels ODI Demo · Fivetran Open Data Infrastructure</div>
             <div>Synthetic snapshot · {new Date().toLocaleDateString()}</div>
           </div>
         </div>

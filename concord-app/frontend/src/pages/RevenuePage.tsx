@@ -3,7 +3,7 @@ import { fetchData, fmtCurrency, fmtNumber, fmtSignedPct } from '../api/data';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, ReferenceLine } from 'recharts';
 
 type BarRow = { property_id: string; property_name: string; day_of_week: string; length_of_stay: number; bar_usd: number };
-type Compset = { property_id: string; property_name: string; city: string; concord_adr: number; compset_median_adr: number; ari: number; mpi: number; rgi: number };
+type Compset = { property_id: string; property_name: string; city: string; ardmore_adr: number; compset_median_adr: number; ari: number; mpi: number; rgi: number };
 type Rec = { property_id: string; property_name: string; target_date: string; current_bar: number; recommended_bar: number; delta_pct: number; rationale: string; confidence: number; auto_apply: boolean };
 type Revenue = {
   bar: BarRow[];
@@ -40,7 +40,7 @@ export default function RevenuePage() {
         <h1 className="font-serif text-4xl tracking-tight">The pricing agent reads the gold layer.</h1>
         <p className="mt-3 text-[var(--ink-muted)] max-w-3xl leading-relaxed">
           BAR by property, length of stay, and day of week. Comp-set positioning live from Sabre +
-          Amadeus. Dynamic-pricing recommendations from the Concord Pricing Agent — every input,
+          Amadeus. Dynamic-pricing recommendations from the Ardmore Pricing Agent — every input,
           output, and override is captured in dbt-tested gold tables.
         </p>
       </header>
@@ -109,7 +109,7 @@ export default function RevenuePage() {
             <tr>
               <th className="text-left px-4 py-2.5 text-[11px] uppercase tracking-wider font-semibold">Property</th>
               <th className="text-left px-4 py-2.5 text-[11px] uppercase tracking-wider font-semibold">City</th>
-              <th className="text-right px-4 py-2.5 text-[11px] uppercase tracking-wider font-semibold">Concord ADR</th>
+              <th className="text-right px-4 py-2.5 text-[11px] uppercase tracking-wider font-semibold">Ardmore ADR</th>
               <th className="text-right px-4 py-2.5 text-[11px] uppercase tracking-wider font-semibold">Comp-set median</th>
               <th className="text-right px-4 py-2.5 text-[11px] uppercase tracking-wider font-semibold">ARI</th>
               <th className="text-right px-4 py-2.5 text-[11px] uppercase tracking-wider font-semibold">MPI</th>
@@ -121,7 +121,7 @@ export default function RevenuePage() {
               <tr key={c.property_id}>
                 <td className="px-4 py-2.5 font-medium text-[var(--ink-strong)]">{c.property_name}</td>
                 <td className="px-4 py-2.5 text-[var(--ink-muted)]">{c.city}</td>
-                <td className="px-4 py-2.5 text-right tabular">{fmtCurrency(c.concord_adr)}</td>
+                <td className="px-4 py-2.5 text-right tabular">{fmtCurrency(c.ardmore_adr)}</td>
                 <td className="px-4 py-2.5 text-right tabular text-[var(--ink-muted)]">{fmtCurrency(c.compset_median_adr)}</td>
                 {[c.ari, c.mpi, c.rgi].map((idx, i) => (
                   <td key={i} className={`px-4 py-2.5 text-right tabular font-semibold ${idx >= 1.0 ? 'text-[var(--good)]' : 'text-[var(--bad)]'}`}>

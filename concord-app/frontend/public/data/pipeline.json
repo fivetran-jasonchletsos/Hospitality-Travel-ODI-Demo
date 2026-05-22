@@ -8,7 +8,9 @@
       "status": "healthy",
       "last_sync_min_ago": 4,
       "rows_24h": 18240000,
-      "freshness_target_min": 10
+      "freshness_target_min": 10,
+      "fivetran_id": "opera_pms_ardmore_001",
+      "fivetran_url": "https://fivetran.com/dashboard/connectors/oracle_opera_pms/opera_pms_ardmore_001"
     },
     {
       "name": "Sabre SynXis CRS",
@@ -17,7 +19,9 @@
       "status": "healthy",
       "last_sync_min_ago": 6,
       "rows_24h": 6120000,
-      "freshness_target_min": 10
+      "freshness_target_min": 10,
+      "fivetran_id": "sabre_synxis_ardmore_001",
+      "fivetran_url": "https://fivetran.com/dashboard/connectors/sabre_synxis/sabre_synxis_ardmore_001"
     },
     {
       "name": "Amadeus Hospitality",
@@ -26,7 +30,9 @@
       "status": "healthy",
       "last_sync_min_ago": 8,
       "rows_24h": 4980000,
-      "freshness_target_min": 15
+      "freshness_target_min": 15,
+      "fivetran_id": "amadeus_hosp_ardmore_001",
+      "fivetran_url": "https://fivetran.com/dashboard/connectors/amadeus_hospitality/amadeus_hosp_ardmore_001"
     },
     {
       "name": "Booking.com partner feed",
@@ -36,7 +42,9 @@
       "last_sync_min_ago": 22,
       "rows_24h": 9460000,
       "freshness_target_min": 15,
-      "note": "Vendor 429 throttling; auto-retry with backoff."
+      "note": "Vendor 429 throttling; auto-retry with backoff.",
+      "fivetran_id": "booking_com_ardmore_001",
+      "fivetran_url": "https://fivetran.com/dashboard/connectors/booking_com/booking_com_ardmore_001"
     },
     {
       "name": "Expedia EPC",
@@ -45,7 +53,9 @@
       "status": "healthy",
       "last_sync_min_ago": 7,
       "rows_24h": 7180000,
-      "freshness_target_min": 15
+      "freshness_target_min": 15,
+      "fivetran_id": "expedia_epc_ardmore_001",
+      "fivetran_url": "https://fivetran.com/dashboard/connectors/expedia_epc/expedia_epc_ardmore_001"
     },
     {
       "name": "Salesforce Service Cloud",
@@ -54,7 +64,9 @@
       "status": "healthy",
       "last_sync_min_ago": 3,
       "rows_24h": 412000,
-      "freshness_target_min": 5
+      "freshness_target_min": 5,
+      "fivetran_id": "sfdc_service_ardmore_001",
+      "fivetran_url": "https://fivetran.com/dashboard/connectors/salesforce/sfdc_service_ardmore_001"
     },
     {
       "name": "Cendyn CRM / loyalty",
@@ -63,7 +75,9 @@
       "status": "healthy",
       "last_sync_min_ago": 5,
       "rows_24h": 2840000,
-      "freshness_target_min": 10
+      "freshness_target_min": 10,
+      "fivetran_id": "cendyn_crm_ardmore_001",
+      "fivetran_url": "https://fivetran.com/dashboard/connectors/cendyn/cendyn_crm_ardmore_001"
     },
     {
       "name": "Twitter/X firehose",
@@ -72,7 +86,9 @@
       "status": "healthy",
       "last_sync_min_ago": 2,
       "rows_24h": 980000,
-      "freshness_target_min": 5
+      "freshness_target_min": 5,
+      "fivetran_id": "twitter_x_ardmore_001",
+      "fivetran_url": "https://fivetran.com/dashboard/connectors/twitter/twitter_x_ardmore_001"
     },
     {
       "name": "TripAdvisor Content API",
@@ -81,7 +97,9 @@
       "status": "healthy",
       "last_sync_min_ago": 11,
       "rows_24h": 180000,
-      "freshness_target_min": 30
+      "freshness_target_min": 30,
+      "fivetran_id": "tripadvisor_ardmore_001",
+      "fivetran_url": "https://fivetran.com/dashboard/connectors/tripadvisor/tripadvisor_ardmore_001"
     },
     {
       "name": "Google Reviews via Places",
@@ -90,7 +108,9 @@
       "status": "healthy",
       "last_sync_min_ago": 14,
       "rows_24h": 220000,
-      "freshness_target_min": 30
+      "freshness_target_min": 30,
+      "fivetran_id": "google_places_ardmore_001",
+      "fivetran_url": "https://fivetran.com/dashboard/connectors/google_reviews/google_places_ardmore_001"
     },
     {
       "name": "Stripe payments",
@@ -99,7 +119,9 @@
       "status": "healthy",
       "last_sync_min_ago": 5,
       "rows_24h": 640000,
-      "freshness_target_min": 5
+      "freshness_target_min": 5,
+      "fivetran_id": "stripe_ardmore_001",
+      "fivetran_url": "https://fivetran.com/dashboard/connectors/stripe/stripe_ardmore_001"
     },
     {
       "name": "NetSuite GL",
@@ -108,7 +130,9 @@
       "status": "healthy",
       "last_sync_min_ago": 18,
       "rows_24h": 38000,
-      "freshness_target_min": 60
+      "freshness_target_min": 60,
+      "fivetran_id": "netsuite_gl_ardmore_001",
+      "fivetran_url": "https://fivetran.com/dashboard/connectors/netsuite/netsuite_gl_ardmore_001"
     }
   ],
   "layers": [

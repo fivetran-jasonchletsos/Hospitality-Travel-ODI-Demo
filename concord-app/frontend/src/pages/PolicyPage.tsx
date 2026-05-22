@@ -39,7 +39,7 @@ export default function PolicyPage() {
         <Section title="What this demo deliberately does not do">
           It does not replace Opera. It does not replace Sabre. It does not replace the RMS. It
           replaces the spreadsheets and the warehouse copies and the screenshots in slide decks
-          that sit between those systems and a decision. Source systems stay sources. Concord
+          that sit between those systems and a decision. Source systems stay sources. Ardmore
           owns the gold layer that every consumer reads — humans and agents.
         </Section>
 
@@ -47,7 +47,7 @@ export default function PolicyPage() {
           The Chief Customer Officer wants the guest. The VP of Revenue Management wants the
           price. Historically these are two stacks built by two teams over two years. On ODI,
           they are two views of the same gold tables. When the CCO sees a complaint surge at
-          Concord Express Houston, the same case data is one feature in the pricing agent's
+          Ardmore Express Houston, the same case data is one feature in the pricing agent's
           demand model — the agent learns from friction the CCO is also reading about.
         </Section>
 

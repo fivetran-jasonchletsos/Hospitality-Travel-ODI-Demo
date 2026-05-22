@@ -28,9 +28,9 @@ export default function AboutPage() {
 
       <header className="mb-8">
         <div className="eyebrow mb-1">ODI Reference Architecture</div>
-        <h1 className="font-serif text-4xl tracking-tight">About Concord Hotels</h1>
+        <h1 className="font-serif text-4xl tracking-tight">About Ardmore Hotels</h1>
         <p className="mt-3 text-[var(--ink-muted)] leading-relaxed">
-          Concord Hotels is a reference build that shows how a premium-mid-tier hotel group
+          Ardmore Hotels is a reference build that shows how a premium-mid-tier hotel group
           unifies fragmented hospitality data — Oracle Opera PMS, Sabre / Amadeus, Booking.com,
           Expedia, Salesforce Service Cloud, Cendyn CRM, and social listening — into one governed
           Snowflake + Apache Iceberg gold layer. Revenue managers and pricing agents read the
@@ -68,7 +68,7 @@ export default function AboutPage() {
             <h3 className="font-serif text-xl text-[var(--ink-strong)]">Pricing on the same gold layer</h3>
             <p className="mt-2 text-sm text-[var(--ink-muted)] leading-relaxed">
               BAR by property, length of stay, and day of week. Comp-set positioning live from
-              Sabre / Amadeus. Dynamic-pricing recommendations from the Concord Pricing Agent,
+              Sabre / Amadeus. Dynamic-pricing recommendations from the Ardmore Pricing Agent,
               governed by dbt-tested guardrails and a human-in-the-loop approval threshold.
             </p>
           </div>
@@ -130,7 +130,7 @@ export default function AboutPage() {
             <div className="eyebrow mb-2" style={{ color: 'var(--brass-dim)' }}>Open Data Infrastructure</div>
             <h3 className="font-serif text-xl text-[var(--ink-strong)]">Open lake-centric</h3>
             <ul className="mt-3 space-y-2 text-sm text-[var(--ink)]">
-              <li>• Concord owns the storage layer (Snowflake + Iceberg)</li>
+              <li>• Ardmore owns the storage layer (Snowflake + Iceberg)</li>
               <li>• Any compute engine — Snowflake, Athena, Trino, Spark, DuckDB</li>
               <li>• Catalog is open (Snowflake Horizon / Glue / Polaris)</li>
               <li>• Pay once for storage; swap compute as workloads evolve</li>
@@ -144,7 +144,7 @@ export default function AboutPage() {
         <div className="eyebrow mb-2" style={{ color: 'var(--warn)' }}>Disclaimer</div>
         <p className="text-[var(--ink-muted)] leading-relaxed">
           <strong className="text-[var(--ink-strong)]">All data shown is synthetic</strong> and
-          generated for this demo. Concord Hotels is a fictional hotel group. No portion of this
+          generated for this demo. Ardmore Hotels is a fictional hotel group. No portion of this
           site reflects the operating data of any real hospitality brand.
         </p>
       </section>
@@ -156,7 +156,7 @@ const PILLARS = [
   {
     tag: 'Pillar 1',
     title: 'Customer-owned storage',
-    body: 'All ingested data lands in Concord\'s Snowflake account on Iceberg tables. Fivetran writes; Concord reads with any engine.',
+    body: 'All ingested data lands in Ardmore\'s Snowflake account on Iceberg tables. Fivetran writes; Ardmore reads with any engine.',
   },
   {
     tag: 'Pillar 2',
@@ -172,7 +172,7 @@ const PILLARS = [
 
 const STACK = [
   { layer: 'Ingest',     name: 'Fivetran',                       note: 'Oracle Opera · Sabre · Amadeus · Booking.com · Expedia · Salesforce · Cendyn · social APIs.' },
-  { layer: 'Storage',    name: 'Snowflake + Apache Iceberg v2',  note: 'concord_lake catalog — bronze · silver · gold · platinum namespaces.' },
+  { layer: 'Storage',    name: 'Snowflake + Apache Iceberg v2',  note: 'ardmore_lake catalog — bronze · silver · gold · platinum namespaces.' },
   { layer: 'Catalog',    name: 'Snowflake Horizon',              note: 'Iceberg REST + object-level access control · row-level policy on guest PII.' },
   { layer: 'Transform',  name: 'dbt',                            note: 'Iceberg-native materializations · 710 tested models · medallion architecture.' },
   { layer: 'Compute',    name: 'Snowflake + Snowpark',           note: 'Pricing agent runs inside the warehouse next to the data.' },

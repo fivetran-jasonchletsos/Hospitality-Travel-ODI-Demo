@@ -21,7 +21,7 @@ export default function ArchitecturePage() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 text-sm">
           <Column tone="bronze" title="Sources" items={SOURCES} />
           <Column tone="teal" title="Fivetran" items={['750+ connectors','Managed Data Lake Service','CDC streaming','Schema evolution','Failure auto-recovery']} />
-          <Column tone="silver" title="Open Lake" items={['Snowflake account','Apache Iceberg v2','concord_lake catalog','bronze · silver · gold · platinum','Snowflake Horizon catalog']} />
+          <Column tone="silver" title="Open Lake" items={['Snowflake account','Apache Iceberg v2','ardmore_lake catalog','bronze · silver · gold · platinum','Snowflake Horizon catalog']} />
           <Column tone="gold" title="dbt" items={['710 models tested','bronze cleansing','silver conformed dims','gold facts + KPIs','platinum agent-ready']} />
           <Column tone="platinum" title="Consumers" items={['CCO + RM dashboards (this app)','Pricing Agent (Snowpark)','Tableau / Looker','Cortex Analyst','Reverse-ETL → Salesforce']} />
         </div>
@@ -44,12 +44,11 @@ export default function ArchitecturePage() {
           <div className="eyebrow mb-2">Pricing-agent governance</div>
           <h3 className="font-serif text-2xl text-[var(--ink-strong)]">Agents read gold. Period.</h3>
           <p className="mt-2 text-sm text-[var(--ink-muted)] leading-relaxed">
-            The Concord Pricing Agent is a Snowpark job that reads exclusively from
-            <code className="mx-1 px-1.5 py-0.5 bg-[var(--ivory-deep)] rounded text-[12px] font-mono">gold.fact_bookings_daily</code>,
-            <code className="mx-1 px-1.5 py-0.5 bg-[var(--ivory-deep)] rounded text-[12px] font-mono">gold.fact_compset_rates</code>,
-            and <code className="px-1.5 py-0.5 bg-[var(--ivory-deep)] rounded text-[12px] font-mono">gold.fact_event_calendar</code>.
-            Recommendations write to <code className="mx-1 px-1.5 py-0.5 bg-[var(--ivory-deep)] rounded text-[12px] font-mono">platinum.agent_pricing_recs</code> with
-            confidence scores. Auto-apply is gated by a dbt-tested guardrail set and a human RM
+            The Ardmore Pricing Agent is a Snowpark job that reads exclusively from
+            three gold tables — daily bookings, comp-set rates, and the event calendar.
+            Recommendations write to{' '}
+            <code className="mx-1 px-1.5 py-0.5 bg-[var(--ivory-deep)] rounded text-[12px] font-mono">platinum.agent_pricing_recs</code>{' '}
+            with confidence scores. Auto-apply is gated by a dbt-tested guardrail set and a human RM
             approval threshold. No agent talks to a raw source system.
           </p>
         </div>
@@ -105,7 +104,7 @@ const SOURCES = [
 ];
 
 const PRINCIPLES = [
-  { tag: 'Open', title: 'No exit cost', body: 'Iceberg means tomorrow\'s engine can read today\'s files. Concord owns the data — Fivetran writes, dbt transforms, anyone reads.' },
+  { tag: 'Open', title: 'No exit cost', body: 'Iceberg means tomorrow\'s engine can read today\'s files. Ardmore owns the data — Fivetran writes, dbt transforms, anyone reads.' },
   { tag: 'Governed', title: 'One semantic layer', body: 'RevPAR is defined once in dbt. The agent and the dashboard cannot disagree because they read the same gold table.' },
   { tag: 'Real-time enough', title: 'Minutes, not days', body: 'CDC syncs in 4–10 minutes. Snowflake materializes silver every 15. A folio dispute opens a case before the guest reaches the lobby.' },
 ];

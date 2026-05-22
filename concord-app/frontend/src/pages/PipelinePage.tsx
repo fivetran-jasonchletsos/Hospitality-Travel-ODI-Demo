@@ -6,6 +6,8 @@ type Connector = {
   status: 'healthy' | 'degraded' | 'failed';
   last_sync_min_ago: number; rows_24h: number; freshness_target_min: number;
   note?: string;
+  fivetran_id?: string;
+  fivetran_url?: string;
 };
 type Layer = { layer: string; tables: number; rows_total: number; last_built_min_ago: number; tests_passing: number; tests_failing: number };
 type Pipeline = {
@@ -41,7 +43,7 @@ export default function PipelinePage() {
           <div className="eyebrow mb-1">Pipeline · {new Date(data.generated_at).toLocaleString()}</div>
           <h1 className="font-serif text-4xl tracking-tight">Sources, sync, and the medallion.</h1>
           <p className="mt-3 text-[var(--ink-muted)] max-w-3xl leading-relaxed">
-            {data.connectors.length} Fivetran connectors keep Concord's bronze layer fresh.
+            {data.connectors.length} Fivetran connectors keep Ardmore's bronze layer fresh.
             dbt builds four medallion layers on Snowflake + Iceberg.
             <span className="block mt-2 text-sm">
               <strong className="text-[var(--ink-strong)]">Lineage label:</strong> {data.lineage_label}.
@@ -87,7 +89,19 @@ export default function PipelinePage() {
             <div className="eyebrow">Bronze landing</div>
             <h2 className="font-serif text-xl">Fivetran connector status</h2>
           </div>
+          <a
+            href="https://fivetran.com/dashboard/connectors"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-sm px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider border bg-[var(--teal)]/5 text-[var(--teal)] border-[var(--teal)]/20 hover:bg-[var(--teal)]/10 transition-colors"
+          >
+            Open in Fivetran
+            <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3M9 2h5v5M14 2 8 8" />
+            </svg>
+          </a>
         </div>
+        <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead className="bg-[var(--ivory-deep)] text-[var(--ink-muted)]">
             <tr>
@@ -97,11 +111,12 @@ export default function PipelinePage() {
               <th className="text-left px-4 py-2.5 text-[11px] uppercase tracking-wider font-semibold">Status</th>
               <th className="text-right px-4 py-2.5 text-[11px] uppercase tracking-wider font-semibold">Last sync</th>
               <th className="text-right px-4 py-2.5 text-[11px] uppercase tracking-wider font-semibold">Rows / 24h</th>
+              <th className="text-left px-4 py-2.5 text-[11px] uppercase tracking-wider font-semibold">Connector ID</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[var(--hairline-soft)]">
             {connectors.map((c) => (
-              <tr key={c.name} className="hover:bg-[var(--ivory-deep)]/40">
+              <tr key={c.name} className="hover:bg-[var(--ivory-deep)]/40 transition-colors duration-100">
                 <td className="px-4 py-2.5 font-medium text-[var(--ink-strong)]">{c.name}</td>
                 <td className="px-4 py-2.5 text-[var(--ink-muted)]">{c.type}</td>
                 <td className="px-4 py-2.5 font-mono text-[12px] text-[var(--ink-muted)]">{c.destination}</td>
@@ -116,10 +131,29 @@ export default function PipelinePage() {
                   <div className="text-[10px] text-[var(--ink-soft)]">target ≤ {c.freshness_target_min} min</div>
                 </td>
                 <td className="px-4 py-2.5 text-right tabular text-[var(--ink-strong)] font-semibold">{fmtCompact(c.rows_24h)}</td>
+                <td className="px-4 py-2.5">
+                  {c.fivetran_id && c.fivetran_url ? (
+                    <a
+                      href={c.fivetran_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 font-mono text-[11px] text-[var(--teal-soft)] hover:text-[var(--teal)] hover:underline transition-colors"
+                      title={`Open connector ${c.fivetran_id} in Fivetran`}
+                    >
+                      {c.fivetran_id}
+                      <svg viewBox="0 0 16 16" className="h-2.5 w-2.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <path d="M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3M9 2h5v5M14 2 8 8" />
+                      </svg>
+                    </a>
+                  ) : (
+                    <span className="text-[var(--ink-soft)] text-[11px]">—</span>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
       </section>
 
       {/* dbt layers */}

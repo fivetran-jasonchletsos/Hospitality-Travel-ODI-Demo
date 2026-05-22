@@ -42,7 +42,7 @@ export default function HomePage() {
         <div className="eyebrow mb-1">Executive Dashboard · {summary?.as_of_date ?? '—'}</div>
         <h1 className="font-serif text-4xl tracking-tight">A view of the entire portfolio.</h1>
         <p className="mt-3 text-[var(--ink-muted)] leading-relaxed max-w-3xl">
-          Concord Hotels operates {summary ? fmtNumber(summary.kpis[0].value as number) : '142'} properties
+          Ardmore Hotels operates {summary ? fmtNumber(summary.kpis[0].value as number) : '142'} properties
           and {summary ? fmtNumber(summary.kpis[1].value as number) : '24,000'} rooms across the Americas.
           Every number on this page is reconciled from Oracle Opera PMS, Sabre / Amadeus, OTA partner
           feeds, Salesforce Service Cloud, and Cendyn loyalty — landed by Fivetran into a single
