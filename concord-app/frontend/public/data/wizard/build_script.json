@@ -1,0 +1,116 @@
+{
+  "events": [
+    {
+      "from": "explorer",
+      "step": 1,
+      "step_label": "Discovery",
+      "body": "Running status against the dbt project. Project parses clean — 24 models, 112 tests, last refresh 06:15 CST.",
+      "side_effect": "tool:status returned ok · 24 models · 112 tests"
+    },
+    {
+      "from": "explorer",
+      "step": 1,
+      "step_label": "Discovery",
+      "body": "Running search for 'RevPAR', 'brand', 'region', 'OTA', 'rate parity', 'channel', 'occupancy', 'weekly'. Four upstream models surface: silver.int_reservations_spine, silver.int_channel_rate_parity, silver.int_property_kpis_daily, gold.dim_properties.",
+      "side_effect": "tool:search matched int_reservations_spine, int_channel_rate_parity, int_property_kpis_daily, dim_properties"
+    },
+    {
+      "from": "summary",
+      "step": 2,
+      "step_label": "Schema Understanding",
+      "body": "Running describe on each candidate. int_reservations_spine is reservation-grain with book_date, channel_code, and rate_plan_id. int_channel_rate_parity holds ota_rate_usd, direct_rate_usd, and parity_gap_pct at property-channel-day grain. int_property_kpis_daily carries revpar_usd, adr_usd, and occupancy_pct at property-day grain. dim_properties maps property_id to brand and region — the Ardmore Grand vs Heritage split lives here.",
+      "side_effect": "tool:describe returned grain=reservation_id, property+channel+day, property+day, property_id"
+    },
+    {
+      "from": "summary",
+      "step": 2,
+      "step_label": "Schema Understanding",
+      "body": "Running lineage. Join path is clean: property_kpis joins dim_properties on property_id, channel_rate_parity attaches via property_id and stay_date. Gap is confirmed — no model aggregates RevPAR with parity attribution to (brand, region, week). That is exactly what gold.fct_revpar_attribution_by_brand_region_week needs to be.",
+      "side_effect": "tool:lineage validated join path · gap confirmed at brand-region-week grain"
+    },
+    {
+      "from": "worker",
+      "step": 3,
+      "step_label": "Data Inspection",
+      "body": "Spinning up an XS warehouse and running dbt_show on a 4-week slice filtered to Ardmore Grand brand. Sunbelt region RevPAR for the week of 2026-05-12 shows $112 vs $126 the prior week — that is an 11.1% drop. Heritage Northeast shows $143 vs $139 — a 2.9% gain. The divergence is real and the grain is viable.",
+      "side_effect": "tool:warehouse start XS · tool:dbt_show 4-week Ardmore Grand slice · Sunbelt -11.1% vs Heritage +2.9% confirmed"
+    },
+    {
+      "from": "worker",
+      "step": 4,
+      "step_label": "Model Creation",
+      "body": "Authoring models/gold/fct_revpar_attribution_by_brand_region_week.sql. Writing the config block first — table materialization, gold schema, tags revenue and ai_built.",
+      "code_target": "sql",
+      "code_append": "{{ config(materialized='table', schema='gold', tags=['revenue', 'ai_built']) }}\n\n"
+    },
+    {
+      "from": "worker",
+      "step": 4,
+      "step_label": "Model Creation",
+      "body": "Writing the header docblock so downstream readers know what this model is and who built it.",
+      "code_target": "sql",
+      "code_append": "-- gold.fct_revpar_attribution_by_brand_region_week\n-- RevPAR, ADR, and OTA rate-parity gap rolled up to\n-- (brand, region, week_start_date)\n-- Built live by dbt-wizard sub-agents in response to CRO escalation\n-- Sources: int_property_kpis_daily + int_channel_rate_parity + dim_properties\n\n"
+    },
+    {
+      "from": "worker",
+      "step": 4,
+      "step_label": "Model Creation",
+      "body": "Anchoring the weekly property KPIs CTE — truncating stay_date to week and joining the property dimension to get brand and region.",
+      "code_target": "sql",
+      "code_append": "with weekly_kpis as (\n    select\n        p.property_id,\n        p.brand,\n        p.region,\n        date_trunc('week', k.stay_date) as week_start_date,\n        avg(k.revpar_usd)    as revpar_usd,\n        avg(k.adr_usd)       as adr_usd,\n        avg(k.occupancy_pct) as occupancy_pct,\n        sum(k.rooms_sold)    as rooms_sold,\n        p.rooms_available    as rooms_available\n    from {{ ref('int_property_kpis_daily') }} k\n    join {{ ref('dim_properties') }} p on p.property_id = k.property_id\n    group by 1, 2, 3, 4, p.rooms_available\n),\n\n"
+    },
+    {
+      "from": "worker",
+      "step": 4,
+      "step_label": "Model Creation",
+      "body": "Adding the rate-parity CTE — averaging OTA vs direct rate gaps by brand, region, and week. Filtering to the Tue-Wed window where the parity gap was detected.",
+      "code_target": "sql",
+      "code_append": "parity_by_week as (\n    select\n        p.brand,\n        p.region,\n        date_trunc('week', c.stay_date) as week_start_date,\n        avg(c.ota_rate_usd)      as avg_ota_rate_usd,\n        avg(c.direct_rate_usd)   as avg_direct_rate_usd,\n        avg(c.parity_gap_pct)    as avg_parity_gap_pct,\n        count(case when dayofweek(c.stay_date) in (2, 3)\n              and c.parity_gap_pct < -0.05\n              then 1 end)        as tue_wed_parity_breach_days\n    from {{ ref('int_channel_rate_parity') }} c\n    join {{ ref('dim_properties') }} p on p.property_id = c.property_id\n    group by 1, 2, 3\n)\n\n"
+    },
+    {
+      "from": "worker",
+      "step": 4,
+      "step_label": "Model Creation",
+      "body": "Final SELECT — one row per (brand, region, week_start_date). RevPAR, ADR, occupancy, parity gap metrics, and the count of Tue-Wed parity-breach days that drove the Sunbelt softness.",
+      "code_target": "sql",
+      "code_append": "select\n    w.brand,\n    w.region,\n    w.week_start_date,\n    w.revpar_usd,\n    w.adr_usd,\n    w.occupancy_pct,\n    w.rooms_sold,\n    w.rooms_available,\n    coalesce(pa.avg_ota_rate_usd, 0)       as avg_ota_rate_usd,\n    coalesce(pa.avg_direct_rate_usd, 0)    as avg_direct_rate_usd,\n    coalesce(pa.avg_parity_gap_pct, 0)     as avg_parity_gap_pct,\n    coalesce(pa.tue_wed_parity_breach_days, 0) as tue_wed_parity_breach_days\nfrom weekly_kpis w\nleft join parity_by_week pa\n    on  pa.brand          = w.brand\n    and pa.region         = w.region\n    and pa.week_start_date = w.week_start_date\norder by week_start_date desc, brand, region\n"
+    },
+    {
+      "from": "verification",
+      "step": 5,
+      "step_label": "Test Authoring",
+      "body": "Writing the YAML companion. Description first, then the schema contract — every column gets a type so downstream consumers can resolve it without ambiguity.",
+      "code_target": "yaml",
+      "code_append": "version: 2\n\nmodels:\n  - name: fct_revpar_attribution_by_brand_region_week\n    description: |\n      RevPAR, ADR, occupancy, and OTA rate-parity gap aggregated to\n      (brand, region, week_start_date). Includes a count of Tue-Wed\n      parity-breach days for root-cause attribution. Built by dbt-wizard\n      sub-agents on 2026-05-23 in response to CRO escalation on the\n      Ardmore Grand Sunbelt RevPAR drop of week 2026-05-12.\n    config:\n      contract:\n        enforced: true\n      tags: [revenue, ai_built]\n      meta:\n        owner: revenue_management\n        built_by: dbt-wizard\n        consumes: [int_property_kpis_daily, int_channel_rate_parity, dim_properties]\n\n"
+    },
+    {
+      "from": "verification",
+      "step": 5,
+      "step_label": "Test Authoring",
+      "body": "Adding column-level tests. Uniqueness on the composite key (brand, region, week_start_date). Not-null on revpar_usd and occupancy_pct. Accepted values on brand to catch property-dimension taxonomy drift.",
+      "code_target": "yaml",
+      "code_append": "    columns:\n      - name: brand\n        data_type: varchar\n        tests:\n          - not_null\n          - accepted_values:\n              values: ['Ardmore Grand', 'Heritage', 'Ardmore Select', 'Ardmore Suites']\n      - name: region\n        data_type: varchar\n        tests:\n          - not_null\n      - name: week_start_date\n        data_type: date\n        tests:\n          - not_null\n      - name: revpar_usd\n        data_type: number\n        tests:\n          - not_null\n      - name: adr_usd\n        data_type: number\n      - name: occupancy_pct\n        data_type: number\n        tests:\n          - not_null\n      - name: avg_parity_gap_pct\n        data_type: number\n      - name: tue_wed_parity_breach_days\n        data_type: number\n\n    tests:\n      - dbt_utils.unique_combination_of_columns:\n          combination_of_columns: [brand, region, week_start_date]\n"
+    },
+    {
+      "from": "verification",
+      "step": 5,
+      "step_label": "Test Authoring",
+      "body": "Running dbt_show on the compiled model against the same 4-week slice Worker used. All column tests resolve clean. Schema contract enforces. The Sunbelt RevPAR drop is visible with 5 Tue-Wed parity-breach days and an avg_parity_gap_pct of -9.4% for Ardmore Grand Sunbelt on week 2026-05-12.",
+      "side_effect": "tool:dbt_show compiled · tests:passed · contract:enforced · Sunbelt parity gap -9.4% confirmed · 5 breach days"
+    },
+    {
+      "from": "worker",
+      "step": 6,
+      "step_label": "Materialization",
+      "body": "Materializing gold.fct_revpar_attribution_by_brand_region_week to Iceberg on S3 via the Snowflake dbt adapter. Writing Parquet files to the gold S3 prefix. Registering with the catalog.",
+      "side_effect": "tool:dbt_run materialized 1 model · 312 rows · 0.02 GB · 8.4s"
+    },
+    {
+      "from": "verification",
+      "step": 6,
+      "step_label": "Materialization",
+      "body": "Running lineage one more time. Four upstreams attached. Downstream consumers — Revenue Committee dashboard, GM weekly report, rate-parity alert feed, Snowflake direct queries — can now resolve the new gold table on their next pass. The CRO's question has a production asset behind it.",
+      "side_effect": "tool:lineage updated · downstream consumers notified · 24 models → 25 models"
+    }
+  ]
+}

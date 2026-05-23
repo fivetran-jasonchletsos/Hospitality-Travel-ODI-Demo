@@ -7,6 +7,7 @@ const NAV_ITEMS: [string, string][] = [
   ['/related', 'Related Properties'],
   ['/revenue', 'Revenue'],
   ['/guest', 'Guest Experience'],
+  ['/dbt-wizard', 'dbt-wizard'],
   ['/architecture', 'ODI Architecture'],
   ['/pipeline', 'Pipeline'],
   ['/policy', 'Policy Brief'],
@@ -153,9 +154,22 @@ export default function Layout() {
           </div>
         </div>
         <div className="border-t border-white/10">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 text-[11px] text-white/50 flex flex-col sm:flex-row gap-1 sm:items-center sm:justify-between">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 text-[11px] text-white/50 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
             <div>© 2026 Ardmore Hotels ODI Demo · Fivetran Open Data Infrastructure</div>
-            <div>Synthetic snapshot · {new Date().toLocaleDateString()}</div>
+            <div className="flex items-center gap-3">
+              <a
+                href={(import.meta.env.BASE_URL ?? '/').replace(/\/$/, '') + '/Ardmore-Hotels-3min-Demo-Runbook.pdf'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-sm px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider border border-white/20 text-white/60 hover:text-white/90 hover:border-white/40 transition-colors"
+              >
+                <svg viewBox="0 0 14 14" className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M7 1v8M3 6l4 4 4-4M2 12h10" />
+                </svg>
+                3-min runbook
+              </a>
+              <span>Synthetic snapshot · {new Date().toLocaleDateString()}</span>
+            </div>
           </div>
         </div>
       </footer>

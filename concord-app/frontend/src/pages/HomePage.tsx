@@ -113,6 +113,55 @@ export default function HomePage() {
         </div>
         <RegionTable properties={props} />
       </section>
+
+      {/* dbt-wizard hero */}
+      <section
+        className="mb-12 rounded-lg border border-[var(--hairline)] p-6 sm:p-8 relative overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #ffffff 0%, rgba(13,148,136,0.04) 100%)', borderLeft: '5px solid #0d9488' }}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          <div className="md:col-span-8">
+            <div className="eyebrow mb-2" style={{ color: '#0d9488' }}>dbt-wizard · Missing Gold Model</div>
+            <h2 className="font-serif text-2xl sm:text-3xl font-semibold leading-tight text-[var(--ink-strong)]">
+              Revenue Committee in 14 hours. No{' '}
+              <span className="font-mono text-xl">gold.fct_revpar_attribution_by_brand_region_week</span> exists.
+            </h2>
+            <p className="mt-3 text-base leading-relaxed text-[var(--ink-muted)] max-w-2xl">
+              The CRO needs to know why Ardmore Grand Sunbelt RevPAR dropped 11% week-over-week while Heritage city properties
+              grew 3%. Manual engineering ETA: 3 to 5 days. dbt-wizard builds the gold table in 90 seconds —
+              four sub-agents, authored SQL, tested schema, materialized to Iceberg.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-4 items-center">
+              <div className="text-sm">
+                <span className="font-mono text-[var(--bad)] font-semibold">$2.6M</span>
+                <span className="text-[var(--ink-muted)] ml-1.5">weekly revenue softness at risk</span>
+              </div>
+              <div className="text-sm">
+                <span className="font-mono font-semibold" style={{ color: '#0d9488' }}>90s</span>
+                <span className="text-[var(--ink-muted)] ml-1.5">dbt-wizard ETA</span>
+              </div>
+            </div>
+          </div>
+          <div className="md:col-span-4 flex flex-col gap-3">
+            <Link
+              to="/dbt-wizard"
+              className="inline-flex items-center justify-center gap-2 rounded-md text-white font-semibold px-6 py-4 hover:opacity-95 transition-opacity text-center"
+              style={{ background: '#0d9488' }}
+            >
+              See the scenario
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <Link
+              to="/wizard-live"
+              className="inline-flex items-center justify-center gap-2 rounded-md font-semibold px-6 py-3 border border-[var(--hairline)] bg-white text-[var(--ink-strong)] hover:bg-[var(--ivory-deep)] transition-colors text-center text-sm"
+            >
+              Jump to live build
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

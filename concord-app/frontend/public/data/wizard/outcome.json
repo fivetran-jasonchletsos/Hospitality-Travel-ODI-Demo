@@ -1,0 +1,104 @@
+{
+  "materialized_model": "gold.fct_revpar_attribution_by_brand_region_week",
+  "row_count": 312,
+  "tests_passed": 8,
+  "tests_written": "6 column-level + 1 combination uniqueness + 1 not-null on revpar_usd",
+  "build_seconds": 90,
+  "before": {
+    "nodes": [
+      { "id": "int_reservations",  "name": "silver.int_reservations_spine",      "layer": "intermediate" },
+      { "id": "int_parity",        "name": "silver.int_channel_rate_parity",     "layer": "intermediate" },
+      { "id": "int_kpis",          "name": "silver.int_property_kpis_daily",     "layer": "intermediate" },
+      { "id": "dim_properties",    "name": "gold.dim_properties",                "layer": "gold" },
+      { "id": "gap",               "name": "gold.fct_revpar_attribution_by_brand_region_week", "layer": "gap", "built": false }
+    ],
+    "edges": [
+      { "from": "int_reservations", "to": "gap" },
+      { "from": "int_parity",       "to": "gap" },
+      { "from": "int_kpis",         "to": "gap" },
+      { "from": "dim_properties",   "to": "gap" }
+    ]
+  },
+  "after": {
+    "nodes": [
+      { "id": "int_reservations",  "name": "silver.int_reservations_spine",      "layer": "intermediate" },
+      { "id": "int_parity",        "name": "silver.int_channel_rate_parity",     "layer": "intermediate" },
+      { "id": "int_kpis",          "name": "silver.int_property_kpis_daily",     "layer": "intermediate" },
+      { "id": "dim_properties",    "name": "gold.dim_properties",                "layer": "gold" },
+      { "id": "new_gold",          "name": "gold.fct_revpar_attribution_by_brand_region_week", "layer": "gold", "built": true, "new": true },
+      { "id": "rev_committee",     "name": "Revenue Committee Dashboard",        "layer": "consumer" },
+      { "id": "rate_alert",        "name": "Rate-Parity Alert Feed",             "layer": "consumer" }
+    ],
+    "edges": [
+      { "from": "int_reservations", "to": "new_gold" },
+      { "from": "int_parity",       "to": "new_gold" },
+      { "from": "int_kpis",         "to": "new_gold" },
+      { "from": "dim_properties",   "to": "new_gold" },
+      { "from": "new_gold",         "to": "rev_committee" },
+      { "from": "new_gold",         "to": "rate_alert" }
+    ]
+  },
+  "root_cause": {
+    "headline": "Five Ardmore Grand Sunbelt properties share an OTA-direct rate-parity issue: OTA channel underpriced by 7-12% on Tue-Wed bookings",
+    "detail": "The new gold table surfaces that all five Sunbelt Grand properties had an avg_parity_gap_pct between -7% and -12% on Tuesday-Wednesday stay nights during week 2026-05-12, generating 5 parity-breach days. OTA-sourced bookings cannibalized direct-channel revenue on those nights, compressing RevPAR without reducing occupancy. Heritage city properties had zero breach days the same week. The fix is a channel-rate configuration change, not a yield-management overhaul.",
+    "affected_cohort": "5 Ardmore Grand Sunbelt properties · Tue-Wed stay nights · week of 2026-05-12",
+    "fallout_count": 5,
+    "total_reviewed": 8
+  },
+  "without_wizard": {
+    "label": "Without dbt-wizard",
+    "summary": "Question enters the analytics backlog. Revenue Committee meets without the answer.",
+    "metrics": [
+      { "label": "Time to model",              "value": "3 to 5 days" },
+      { "label": "Engineer hours",             "value": "8 to 14h" },
+      { "label": "Tests written",              "value": "ad-hoc" },
+      { "label": "Lineage entries",            "value": "manual" },
+      { "label": "Documentation",              "value": "PR-time only" },
+      { "label": "Revenue Committee status",   "value": "no answer" }
+    ],
+    "narrative": [
+      "CRO files the request. It enters the analytics backlog at priority B.",
+      "Data engineer scopes the work Monday morning — four days after the committee.",
+      "Engineer writes SQL from scratch, joining four silver and gold models by hand.",
+      "Tests, YAML, and contract get bolted on at PR time. Sometimes.",
+      "Revenue team cannot isolate root cause before the committee meeting.",
+      "$2.6M weekly revenue softness carries into the next booking week unfixed."
+    ]
+  },
+  "with_wizard": {
+    "label": "With dbt-wizard",
+    "summary": "Four sub-agents surface the upstreams, author the SQL, write the tests, and materialize the asset in 90 seconds.",
+    "metrics": [
+      { "label": "Time to model",              "value": "90 seconds" },
+      { "label": "Engineer hours",             "value": "0.0h authored" },
+      { "label": "Tests written",              "value": "6 column + 1 combination + 1 not-null" },
+      { "label": "Lineage entries",            "value": "auto, 4 upstream" },
+      { "label": "Documentation",              "value": "in YAML on materialize" },
+      { "label": "Revenue Committee status",   "value": "root cause in hand" }
+    ],
+    "narrative": [
+      "Explorer runs status and search. Returns the four silver and gold upstream candidates.",
+      "Summary runs describe and lineage. Confirms join path and names the new grain.",
+      "Worker runs dbt_show on a 4-week slice. Validates Sunbelt vs Heritage divergence.",
+      "Worker authors fct_revpar_attribution_by_brand_region_week.sql with CTEs and final SELECT.",
+      "Verification writes the YAML — description, schema contract, 8 tests, ownership.",
+      "Worker materializes the table to Iceberg. Verification confirms downstream lineage.",
+      "CRO presents root-cause finding to Revenue Committee 14 hours ahead of schedule."
+    ]
+  },
+  "governance": [
+    { "label": "Tests written",           "value": "6 column-level + 1 combination + 1 not-null" },
+    { "label": "Schema contract",         "value": "enforced on materialize" },
+    { "label": "Lineage upstreams",       "value": "4 declared, 4 validated" },
+    { "label": "Documentation",           "value": "auto-written in YAML" },
+    { "label": "Ownership",              "value": "revenue_management" },
+    { "label": "Tag",                     "value": "ai_built · revenue · rate_parity" },
+    { "label": "Iceberg table format",    "value": "v2 · Parquet · ZSTD" },
+    { "label": "Open Catalog registration", "value": "complete" }
+  ],
+  "hero": {
+    "label": "Root cause identified 14 hours before the Revenue Committee meets",
+    "value": "90 seconds",
+    "note": "From CRO question to materialized Iceberg gold table — versioned, tested, documented, lineage-tracked. The revenue team now knows the OTA channel underpricing on Tue-Wed bookings drove the Sunbelt softness. The fix is a channel-rate configuration change, not a yield-management overhaul. $2.6M weekly revenue softness has a diagnosis and a clear remediation path."
+  }
+}

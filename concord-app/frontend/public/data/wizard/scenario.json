@@ -1,0 +1,46 @@
+{
+  "company": "Ardmore Hotels",
+  "request_id": "BLD-2026-05-23-0012",
+  "requested_by": "Elena Vasquez, CRO",
+  "requested_at": "2026-05-23T08:14:00-05:00",
+  "timezone_label": "Friday 08:14 CST",
+  "question": "Why did RevPAR for Ardmore Grand Sunbelt properties drop 11% week-over-week while Heritage city properties grew 3%?",
+  "metric_label": "RevPAR attribution by brand, region, and week",
+  "metric_code": "gold.fct_revpar_attribution_by_brand_region_week",
+  "sop_meeting_at": "2026-05-23T22:00:00-05:00",
+  "sop_meeting_label": "Friday 22:00 CST · Revenue Committee",
+  "target_schema": "gold",
+  "target_model": "fct_revpar_attribution_by_brand_region_week",
+  "target_grain": "one row per (brand, region, week_start_date)",
+  "prior_crisis_id": "INC-2026-05-17-0028",
+  "hotel_group": "Ardmore Hotels",
+  "brand_segment": "Ardmore Grand Sunbelt",
+  "upstream_models": [
+    {
+      "model": "silver.int_reservations_spine",
+      "layer": "intermediate",
+      "grain": "reservation_id",
+      "description": "Conformed reservation spine joining Oracle Opera PMS with OTA and direct booking channel flags. Includes book_date, arrival_date, channel_code, and rate_plan_id."
+    },
+    {
+      "model": "silver.int_channel_rate_parity",
+      "layer": "intermediate",
+      "grain": "property_id · channel_code · stay_date",
+      "description": "Daily OTA-vs-direct rate comparison by property and channel. Includes ota_rate_usd, direct_rate_usd, and parity_gap_pct computed from Sabre and Expedia feeds via Fivetran."
+    },
+    {
+      "model": "silver.int_property_kpis_daily",
+      "layer": "intermediate",
+      "grain": "property_id · stay_date",
+      "description": "Daily RevPAR, ADR, and occupancy rolled up per property from the Opera PMS. Joins to the property dimension for brand and region classification."
+    },
+    {
+      "model": "gold.dim_properties",
+      "layer": "gold",
+      "grain": "property_id (SCD-2)",
+      "description": "Property master with brand (Ardmore Grand, Heritage), market segment, region (Sunbelt, Northeast, Mountain, Pacific), and room count. Primary dimension for brand-region roll-ups."
+    }
+  ],
+  "manual_time_days": "3 to 5 days",
+  "build_room_seconds": 90
+}

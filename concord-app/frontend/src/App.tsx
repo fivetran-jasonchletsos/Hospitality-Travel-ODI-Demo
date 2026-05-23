@@ -10,6 +10,9 @@ import PolicyPage from './pages/PolicyPage';
 import PortfolioPage from './pages/PortfolioPage';
 import RelatedPage from './pages/RelatedPage';
 import NotFoundPage from './pages/NotFoundPage';
+import DbtWizardScenarioPage from './pages/DbtWizardScenarioPage';
+import WizardLivePage from './pages/WizardLivePage';
+import DbtWizardOutcomePage from './pages/DbtWizardOutcomePage';
 
 export default function App() {
   return (
@@ -25,6 +28,9 @@ export default function App() {
           <Route path="/pipeline" element={<PipelinePage />} />
           <Route path="/policy" element={<PolicyPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/dbt-wizard" element={<DbtWizardScenarioPage />} />
+          <Route path="/wizard-live" element={<WizardLivePage />} />
+          <Route path="/outcome" element={<DbtWizardOutcomePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
