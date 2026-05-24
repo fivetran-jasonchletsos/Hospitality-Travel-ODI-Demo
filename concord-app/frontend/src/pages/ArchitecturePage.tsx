@@ -23,7 +23,7 @@ export default function ArchitecturePage() {
           <Column tone="teal" title="Fivetran" items={['750+ connectors','Managed Data Lake Service','CDC streaming','Schema evolution','Failure auto-recovery']} />
           <Column tone="silver" title="Open Lake" items={['Snowflake account','Apache Iceberg v2','ardmore_lake catalog','bronze · silver · gold · platinum','Snowflake Horizon catalog']} />
           <Column tone="gold" title="dbt" items={['710 models tested','bronze cleansing','silver conformed dims','gold facts + KPIs','platinum agent-ready']} />
-          <Column tone="platinum" title="Consumers" items={['CCO + RM dashboards (this app)','Pricing Agent (Snowpark)','Tableau / Looker','Cortex Analyst','Reverse-ETL → Salesforce']} />
+          <Column tone="platinum" title="Consumers" items={['CCO + RM dashboards (this app)','Pricing Agent (Snowpark)','Tableau / Looker','Agents on the gold layer','Reverse-ETL → Salesforce']} />
         </div>
       </section>
 

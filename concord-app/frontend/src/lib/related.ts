@@ -1,7 +1,7 @@
 // Related-properties similarity engine.
 //
 // Computes a top-K nearest-neighbor list for each Ardmore Hotels property using
-// weighted feature overlap.  Mirrors what a Cortex embedding pipeline would
+// weighted feature overlap.  Mirrors what an agent on the gold layer would
 // produce in production — the math runs client-side so the static site can
 // render the network without a runtime API.
 

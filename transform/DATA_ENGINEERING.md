@@ -31,7 +31,7 @@ Iceberg for Concord Hotels.
 |------------------------------------|-----------------------------------------|
 | `platinum.agent_pricing_features`  | Concord Pricing Agent (Snowpark)        |
 | `platinum.agent_pricing_recs`      | Pricing Agent output, audited           |
-| `platinum.agent_guest_360`         | Guest experience agent / Cortex         |
+| `platinum.agent_guest_360`         | Guest experience agent on the gold layer |
 | `platinum.agent_demand_signals`    | Forecast model                          |
 
 ## Identity resolution

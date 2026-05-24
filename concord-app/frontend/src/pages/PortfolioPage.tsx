@@ -170,8 +170,8 @@ function RelatedPanel({ property, onClose }: { property: Property; onClose: () =
 
       <div className="px-5 py-2.5 border-t border-[var(--hairline-soft)] bg-[var(--ivory-deep)] text-[10px] text-[var(--ink-soft)]">
         Similarity model: brand tier (weight 1.6), market type (1.4), region (0.9), ADR band (0.7), amenity tags (0.6).
-        Pre-computed at page load from the static properties snapshot — mirrors a Snowflake Cortex
-        embedding pipeline in production.
+        Pre-computed at page load from the static properties snapshot — mirrors a Snowflake semantic model on the dbt-governed layer
+        in production.
       </div>
     </div>
   );
