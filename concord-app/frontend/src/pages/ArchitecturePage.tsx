@@ -13,8 +13,8 @@ import { useState, useEffect } from 'react';
 import { AliveMedallion, type SourceNode, type EngineNode, type ConsumerRole } from '../components/AliveMedallion';
 
 const HOSP_SOURCES: SourceNode[] = [
-  { id: 'pms',     label: 'Property Mgmt System', sub: 'SQL Server log-CDC',    logo: 'sqlserver', freshness: '47s lag',  status: 'healthy' },
-  { id: 'loyalty', label: 'Loyalty Program',      sub: 'Oracle LogMiner',       logo: 'oracle',    freshness: '2 min lag', status: 'healthy' },
+  { id: 'pms',     label: 'Property Mgmt System', sub: 'SQL Server log-CDC',    logo: 'sqlserver', freshness: '47s lag',  status: 'healthy', pipelineUrl: 'https://fivetran.com/dashboard/connectors/proviso_antiquely' },
+  { id: 'loyalty', label: 'Loyalty Program',      sub: 'Oracle Binary Log Reader',       logo: 'oracle',    freshness: '2 min lag', status: 'healthy', pipelineUrl: 'https://fivetran.com/dashboard/connectors/slippery_swiftness' },
   { id: 'book',    label: 'Booking Engine',       sub: 'Real-time event stream',logo: 'hl7',       freshness: 'live',      status: 'healthy', streaming: true },
   { id: 'str',     label: 'STR Market Data',      sub: 'Weekly comp set feed',  logo: 'cms',       freshness: '5d lag',   status: 'healthy' },
 ];
@@ -348,7 +348,9 @@ export default function ArchitecturePage() {
             <p className="text-sm text-[var(--ink-muted)] mt-1">
               Tests defined in dbt Labs run on every build, against the same Iceberg tables every
               engine reads. Failures block promotion to the next layer &mdash; bad data never
-              reaches the revenue desk.
+              reaches the revenue desk. Paired with the Great Expectations checkpoints below:
+              GX runs suite-based expectations against raw landings; dbt enforces SQL-native
+              contracts across bronze, silver, and gold.
             </p>
           </div>
           <div className="inline-flex items-center gap-1.5 rounded-sm px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white shrink-0" style={{ background: '#FF694A' }}>
@@ -393,6 +395,9 @@ export default function ArchitecturePage() {
           <span className="uppercase tracking-wider font-semibold">dbt build · merged into Fivetran</span>
         </div>
       </section>
+
+      {/* ── Data Quality — Great Expectations ────────────────────────────── */}
+      <GreatExpectationsPanel />
 
       {/* ── Before / After ───────────────────────────────────────────────── */}
       <BeforeAfterPanel />
@@ -709,6 +714,211 @@ function Policy({ label, value }: { label: string; value: string }) {
         <span className="text-[var(--ink-muted)]"> · {value}</span>
       </div>
     </li>
+  );
+}
+
+// =============================================================================
+// GreatExpectationsPanel — Fivetran-stewarded OSS data-quality gate
+// =============================================================================
+interface GxSuite {
+  suite: string;
+  table: string;
+  layer: 'bronze' | 'silver' | 'gold';
+  expectations: number;
+  passing: number;
+  last_run: string;
+  why: string;
+}
+
+const GX_SUITES: GxSuite[] = [
+  {
+    suite: 'opera.reservation.completeness',
+    table: 'bronze.opera__reservation',
+    layer: 'bronze',
+    expectations: 18,
+    passing: 18,
+    last_run: '07:14:22',
+    why: 'reservation_id unique + not null; check_in_dt ≤ check_out_dt; guest_id resolves to opera__guest_profile; channel ∈ {Direct, OTA, GDS, Wholesale, Corporate}.',
+  },
+  {
+    suite: 'opera.folio.referential',
+    table: 'bronze.opera__folio',
+    layer: 'bronze',
+    expectations: 14,
+    passing: 13,
+    last_run: '07:14:31',
+    why: 'Every folio line resolves to a known reservation_id; posting_dt ∈ stay window; one warn this run on a deprecated package_code still in flight from sister property.',
+  },
+  {
+    suite: 'opera.rate_plan.ranges',
+    table: 'bronze.opera__rate_plan',
+    layer: 'bronze',
+    expectations: 12,
+    passing: 12,
+    last_run: '07:11:09',
+    why: 'rate_plan_id unique; ADR_published in [25, 5000]; cancellation_policy ∈ {Flexible, Moderate, Strict, NonRef}; rate_code matches Opera 8-char regex.',
+  },
+  {
+    suite: 'opera.room_inventory.bounds',
+    table: 'bronze.opera__room_inventory',
+    layer: 'bronze',
+    expectations: 10,
+    passing: 10,
+    last_run: '07:11:18',
+    why: 'rooms_available ≥ 0 and ≤ property_total_rooms; occupancy_pct in [0, 100]; as_of_date ≤ today; no duplicate (property_id, room_type, date).',
+  },
+  {
+    suite: 'cendyn.loyalty_member.contract',
+    table: 'bronze.cendyn__loyalty_member',
+    layer: 'bronze',
+    expectations: 15,
+    passing: 15,
+    last_run: '07:11:48',
+    why: 'member_id unique; loyalty_tier ∈ {Member, Silver, Gold, Platinum, Ambassador}; enrolled_dt ≤ today; PII tag set on email + phone for downstream masking.',
+  },
+  {
+    suite: 'silver.stay_spine.integrity',
+    table: 'silver.int_stay_spine',
+    layer: 'silver',
+    expectations: 22,
+    passing: 22,
+    last_run: '07:18:14',
+    why: 'One row per (property_id, reservation_id); nights = check_out_dt − check_in_dt; ADR = total_room_revenue / nights within $0.01; no orphan reservations.',
+  },
+  {
+    suite: 'gold.dim_guest.contract',
+    table: 'gold.dim_guest',
+    layer: 'gold',
+    expectations: 16,
+    passing: 16,
+    last_run: '07:22:51',
+    why: 'Output contract: email + phone + address PII masked per policy; loyalty_tier ∈ published set; row count within ±2% of yesterday.',
+  },
+  {
+    suite: 'gold.fct_revpar_daily.reconciliation',
+    table: 'gold.fct_revpar_daily',
+    layer: 'gold',
+    expectations: 13,
+    passing: 13,
+    last_run: '07:22:59',
+    why: 'ADR ≥ 0; RevPAR = ADR × occupancy_pct within $0.01; occupancy_pct in [0, 100]; daily totals reconcile to sum of bronze.opera__folio room revenue.',
+  },
+];
+
+function GreatExpectationsPanel() {
+  const totals = GX_SUITES.reduce(
+    (a, s) => ({ exp: a.exp + s.expectations, pass: a.pass + s.passing, suites: a.suites + 1 }),
+    { exp: 0, pass: 0, suites: 0 },
+  );
+  const warns = totals.exp - totals.pass;
+
+  return (
+    <section className="mb-8 research-card overflow-hidden" style={cardStyle}>
+      <header className="research-card-header flex items-start justify-between gap-4" style={cardHeaderStyle}>
+        <div>
+          <div className="eyebrow" style={{ color: '#9a3412' }}>Data Quality · Great Expectations</div>
+          <h2 className="font-serif text-xl text-[var(--ink-strong)] mt-0.5">
+            Validation runs on Bronze before anything reaches Silver.
+          </h2>
+          <p className="text-sm text-[var(--ink-muted)] mt-1 max-w-3xl">
+            Expectation suites define what "valid" looks like for each hospitality table &mdash;
+            reservation completeness (check-in ≤ check-out), rate-plan + ADR ranges, occupancy
+            bounds, channel-mix conformance, PMS-to-guest referential integrity. A failed
+            expectation blocks promotion. Same lake, same Iceberg snapshots, just gated.
+          </p>
+        </div>
+        <div className="flex flex-col items-end gap-1.5 shrink-0">
+          <div className="inline-flex items-center gap-1.5 rounded-sm px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white" style={{ background: '#9a3412' }}>
+            GX Core · OSS
+          </div>
+          <div className="text-[10px] text-[var(--ink-soft)] font-mono">Fivetran-stewarded</div>
+        </div>
+      </header>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 divide-y-0 md:divide-x divide-[var(--hairline-soft,#e8e4d8)]">
+        <RecoveryTile label="Expectation suites"     big={String(totals.suites)} sub="across bronze · silver · gold layers" />
+        <RecoveryTile label="Expectations · today"   big={`${totals.pass}/${totals.exp}`} sub={`${warns} warn · 0 errors · gates Silver promotion`} color={warns ? '#b45309' : '#16a34a'} />
+        <RecoveryTile label="Checkpoint cadence"     big="every sync" sub="triggered by Fivetran sync-complete · runs before dbt build" />
+        <RecoveryTile label="Failed-expectation queue" big="5 rows" sub="deprecated package_code from sister property · held in dlq.gx_quarantine · auto-retried after suite update" color="#b45309" />
+      </div>
+
+      <div className="overflow-x-auto border-t border-[var(--hairline-soft,#e8e4d8)]">
+        <table className="min-w-full text-sm" style={{ fontVariantNumeric: 'tabular-nums' }}>
+          <thead className="border-b border-[var(--hairline)]" style={{ background: 'var(--paper-deep,#f4efe2)' }}>
+            <tr>
+              <Th>Layer</Th>
+              <Th>Suite</Th>
+              <Th>Table under test</Th>
+              <Th align="right">Expectations</Th>
+              <Th align="right">Last run</Th>
+              <Th>What it asserts</Th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-[var(--hairline-soft,#e8e4d8)]">
+            {GX_SUITES.map((s) => {
+              const ok = s.passing === s.expectations;
+              return (
+                <tr key={s.suite} className="hover:bg-[var(--paper-deep,#f4efe2)] cursor-default">
+                  <td className="px-4 py-2.5"><LayerChip layer={s.layer} /></td>
+                  <td className="px-4 py-2.5 font-mono text-[12px] text-[var(--ink-strong)]">{s.suite}</td>
+                  <td className="px-4 py-2.5 text-xs text-[var(--ink-muted)] font-mono">{s.table}</td>
+                  <td className="px-4 py-2.5 text-right font-semibold" style={{ color: ok ? '#16a34a' : '#b45309' }}>
+                    {s.passing}/{s.expectations}
+                    {!ok && <span className="ml-1 text-[10px] uppercase tracking-wider">warn</span>}
+                  </td>
+                  <td className="px-4 py-2.5 text-right text-xs text-[var(--ink-muted)] font-mono">{s.last_run}</td>
+                  <td className="px-4 py-2.5 text-xs text-[var(--ink)] leading-snug max-w-md">{s.why}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 divide-y md:divide-y-0 md:divide-x divide-[var(--hairline-soft,#e8e4d8)] border-t border-[var(--hairline-soft,#e8e4d8)]">
+        <div className="p-5">
+          <div className="text-[10px] uppercase tracking-[0.16em] text-[var(--ink-soft)] font-semibold mb-3">Sample expectation suite · opera.reservation.completeness</div>
+          <pre className="font-mono text-[11.5px] leading-relaxed overflow-x-auto rounded-sm p-3" style={{ background: '#0b2545', color: '#e6e9f0' }}><code>{`# opera_reservation_completeness.yml
+expectation_suite_name: opera.reservation.completeness
+data_asset_name: bronze.opera__reservation
+
+expectations:
+  - expect_column_values_to_not_be_null:
+      column: reservation_id
+  - expect_column_values_to_be_unique:
+      column: reservation_id
+  - expect_column_pair_values_a_to_be_less_than_or_equal_to_b:
+      column_A: check_in_dt
+      column_B: check_out_dt
+  - expect_column_values_to_be_in_set:
+      column: channel
+      value_set: [Direct, OTA, GDS, Wholesale, Corporate]
+  - expect_column_values_to_be_between:
+      column: adr_booked
+      min_value: 25
+      max_value: 5000
+  - expect_table_row_count_to_be_between:
+      min_value: 1500000
+      max_value: 2200000`}</code></pre>
+        </div>
+        <div className="p-5">
+          <div className="text-[10px] uppercase tracking-[0.16em] text-[var(--ink-soft)] font-semibold mb-3">How this fits the stack</div>
+          <ul className="space-y-2.5 text-sm">
+            <Policy label="Fivetran moves" value="Opera PMS CDC · Cendyn loyalty · booking-engine events · STR comp-set into Bronze (Iceberg)" />
+            <Policy label="Great Expectations validates" value="Bronze landings against suites before Silver promotion" />
+            <Policy label="dbt transforms" value="Silver + Gold marts; dbt tests assert SQL-level constraints" />
+            <Policy label="Failed rows" value="route to dlq.gx_quarantine on the same lake; retried after suite update" />
+            <Policy label="Open source" value="GX Core remains community-driven; Fivetran funds maintenance, ecosystem, and engineering investment" />
+            <Policy label="Community" value="github.com/great-expectations/great_expectations · thousands of teams use GX outside Fivetran's customer base" />
+          </ul>
+          <div className="mt-4 pt-3 border-t border-[var(--hairline-soft,#e8e4d8)] text-[11px] text-[var(--ink-soft)] leading-relaxed">
+            On May 13, 2026 Fivetran announced it is becoming steward of the Great Expectations open
+            source community and the GX Core project, supporting ongoing maintenance, ecosystem
+            integrations, and community engagement. Same open project, backed by sustained engineering.
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
