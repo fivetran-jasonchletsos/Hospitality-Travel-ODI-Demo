@@ -176,7 +176,7 @@ const STACK = [
   { layer: 'Catalog',    name: 'Snowflake Horizon',              note: 'Iceberg REST + object-level access control · row-level policy on guest PII.' },
   { layer: 'Transform',  name: 'dbt',                            note: 'Iceberg-native materializations · 710 tested models · medallion architecture.' },
   { layer: 'Compute',    name: 'Snowflake + Snowpark',           note: 'Pricing agent runs inside the warehouse next to the data.' },
-  { layer: 'Frontend',   name: 'React 19 + Vite + Tailwind v4',  note: 'Static SPA on GitHub Pages, reads JSON snapshot.' },
+  { layer: 'Frontend',   name: 'React 19 + Vite + Tailwind v4',  note: 'Static SPA on GitHub Pages, reads the gold layer via Snowflake / Athena / Trino.' },
   { layer: 'Charts',     name: 'Recharts',                       note: 'Forecast curves, channel mix, NPS distribution.' },
   { layer: 'BI',         name: 'dbt Semantic Layer + Tableau',   note: 'KPIs defined once; consumed by humans and agents.' },
 ];

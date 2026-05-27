@@ -273,8 +273,8 @@ export default function Layout() {
             <div className="eyebrow-light mb-2">Data Pipeline</div>
             <p className="leading-relaxed text-white/70">
               Oracle Opera PMS · Sabre / Amadeus GDS · Booking.com · Expedia · Salesforce Service
-              Cloud · Cendyn CRM · Social listening → Fivetran → Snowflake + Apache Iceberg → dbt
-              (bronze / silver / gold) → static JSON snapshot
+              Cloud · Cendyn CRM · Social listening → Fivetran → Iceberg on S3 → dbt →
+              Great Expectations → Snowflake / Athena / Trino → Cortex
             </p>
           </div>
           <div>

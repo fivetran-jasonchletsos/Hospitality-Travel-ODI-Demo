@@ -1,4 +1,4 @@
-// Data fetch helpers — read static JSON built from the Snowflake gold layer
+// Data fetch helpers — read the Snowflake gold layer (Fastly-cached)
 // via Fivetran ingest + dbt transforms. In the live demo, these would call
 // an Athena/Snowflake-fronted API; here we serve the snapshot directly.
 
@@ -10,7 +10,7 @@ export function fetchData<T>(path: string): Promise<T> {
   if (cache.has(path)) return cache.get(path) as Promise<T>;
   const p = (async () => {
     const url = `${BASE}${path}`;
-    const res = await fetch(url, { cache: 'no-cache' });
+    const res = await fetch(url);
     if (!res.ok) throw new Error(`Fetch failed ${url}: ${res.status}`);
     return res.json() as Promise<T>;
   })();
