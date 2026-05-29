@@ -54,7 +54,10 @@ export default function DbtWizardScenarioPage() {
   const [tMinus, setTMinus] = useState('T-14:00:00');
 
   useEffect(() => {
-    fetch(wizardDataUrl('scenario.json')).then(r => r.json()).then(setS);
+    fetch(wizardDataUrl('scenario.json'))
+      .then(r => { if (!r.ok) throw new Error(`Fetch failed: ${r.status}`); return r.json(); })
+      .then(setS)
+      .catch(() => {});
   }, []);
 
   useEffect(() => {

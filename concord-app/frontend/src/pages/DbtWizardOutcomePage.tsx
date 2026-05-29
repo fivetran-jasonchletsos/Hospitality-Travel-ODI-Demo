@@ -81,8 +81,9 @@ export default function DbtWizardOutcomePage() {
 
   useEffect(() => {
     fetch(wizardDataUrl('outcome.json'))
-      .then(r => r.json())
-      .then(setO);
+      .then(r => { if (!r.ok) throw new Error(`Fetch failed: ${r.status}`); return r.json(); })
+      .then(setO)
+      .catch(() => {});
   }, []);
 
   if (!o) {
