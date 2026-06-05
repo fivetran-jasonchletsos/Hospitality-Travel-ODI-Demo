@@ -85,7 +85,7 @@ const ENGINES: QueryEngine[] = [
   {
     name: 'Snowflake',
     status: 'active',
-    description: 'Primary engine for the Ardmore gold layer. Reads Iceberg externals through Snowflake Horizon catalog; auto-suspends between queries. Where the front end, the revenue dashboards, and Cortex Analyst all land.',
+    description: 'Primary engine for the Ardmore gold layer. Reads Iceberg externals through Snowflake Horizon catalog; auto-suspends between queries. Where the front end, the revenue dashboards, and the dbt-wizard run-time agents all land. Humans and agents read the same gold layer.',
     sample_query: `SELECT
   p.property_name, p.market,
   d.business_date,

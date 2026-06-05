@@ -274,7 +274,7 @@ export default function Layout() {
             <p className="leading-relaxed text-white/70">
               Oracle Opera PMS · Sabre / Amadeus GDS · Booking.com · Expedia · Salesforce Service
               Cloud · Cendyn CRM · Social listening → Fivetran → Iceberg on S3 → dbt →
-              Great Expectations → Snowflake / Athena / Trino → Cortex
+              Great Expectations → Snowflake / Athena / Trino → run-time agents
             </p>
           </div>
           <div>
